@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Weapon Search Results</h1>
-    <form method="GET" action="{% url 'weapon_search' %}">
+    <form method="GET" action="{% url 'weapons:weapon_search' %}">
         <input type="text" name="query" placeholder="Search by weapon name">
         <button type="submit">Search</button>
     </form>

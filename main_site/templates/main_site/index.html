@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starfield Shmawshmield</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main_site/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Starfield Shmawshmield</h1>
+        <nav>
+            <a href="{% url "weapons:weapon_search" %}">Search for wepaans</a>
+            <a href="{% url 'weapons:display_all_items' %}">Click me</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Instresting Starfield Stuffs Goes Here!</h2>
+            <p>This is where I will copy+paste intresting stuff about Starfield.</p>
+        </section>
+    
+        <section>
+            <h2>Look At All These Guns!!!!</h2>
+            <p>Explore a vast array of weapons in Starfield</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Starfield Shmawshmield. All rights reserved.</p>
+    </footer>
+<h2>Look at all deez guns innit.</h2>
+</body>
+</html>
