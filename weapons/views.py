@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Weapons
+from .models import Weapons, AllWeaponModPrefixes, AllWeaponPerks
 
 def weapon_search(request):
     if request.method == 'GET':
@@ -10,4 +10,6 @@ def weapon_search(request):
             'weapons': weapons,
             'query': query,
         }
-        return render(request, 'app_boss/search_results.html', context)
+        return render(request, 'weapons/search_results.html', context)
+    
+def display_all_items(request):
