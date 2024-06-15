@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weapon Search Results</title>
+</head>
+<body>
+    <h1>Weapon Search Results</h1>
+    <form method="GET" action="{% url 'weapon_search' %}">
+        <input type="text" name="query" placeholder="Search by weapon name">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for weapon in weapons %}
+            <li>{{ weapon.name }} - Rarity: {{ weapon.rarity }}</li>
+        {% empty %}
+            
+    </ul>
+</body>
+</html>
