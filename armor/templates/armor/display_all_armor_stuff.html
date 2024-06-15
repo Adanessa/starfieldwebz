@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Armor Stuffs</title>
+</head>
+<body>
+    <h1>All Armor Stuffs</h1>
+    <h2>Apparel</h2>
+    <ul>
+        {% for apparel in apparel %}
+        <li>{{ apparel.name }} - Physical: {{ apparel.physical }} - Energy: {{ apparel.energy }}</li>
+        {% empty %}
+            <li>No Apparel found.</li>
+        {% endfor %}
+    </ul>
+    <h2>Armor Mods</h2>
+    <ul>
+        {% for armor_mods in armor_mods %}
+        <li>{{ armor_mods.name }} - Type: {{ armor_mods.type }} - Effect: {{ armor_mods.effect }}</li>
+        {% empty %}
+            <li>No Armor Mods found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
