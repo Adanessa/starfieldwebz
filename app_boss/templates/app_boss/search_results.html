@@ -14,7 +14,8 @@
         {% for weapon in weapons %}
             <li>{{ weapon.name }} - Rarity: {{ weapon.rarity }}</li>
         {% empty %}
-            
+            <li>No weapons found.</li>
+        {% endfor %}
     </ul>
 </body>
 </html>

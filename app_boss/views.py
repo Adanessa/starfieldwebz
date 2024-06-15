@@ -10,4 +10,4 @@ def weapon_search(request):
             'weapons': weapons,
             'query': query,
         }
-        return render(request, 'weapons/search_results.html', context)
+        return render(request, 'app_boss/search_results.html', context)
