@@ -322,8 +322,6 @@ class PharmaceuticalLab(models.Model):
         db_table = 'pharmaceutical_lab'
 
 
-
-
 class Powers(models.Model):
     name = models.TextField(blank=True, null=True)
     effect = models.TextField(blank=True, null=True)
