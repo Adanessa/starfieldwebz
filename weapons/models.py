@@ -58,16 +58,6 @@ class AllWeaponPerks(models.Model):
         managed = False
         db_table = 'all_weapon_perks'
 
-class ArmorMods(models.Model):
-    name = models.TextField(blank=True, null=True)
-    type = models.TextField(blank=True, null=True)
-    effect = models.TextField(blank=True, null=True)
-    materials = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'armor_mods'
-
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)

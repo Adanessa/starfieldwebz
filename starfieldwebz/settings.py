@@ -1,4 +1,6 @@
 import os
+import sys
+from django.conf import settings
 from pathlib import Path
 from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -17,8 +19,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
 
+
+TESTING = "test" in sys.argv
+
+# Define your default INSTALLED_APPS and MIDDLEWARE lists here
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,7 +34,7 @@ INSTALLED_APPS = [
     'weapons',
     'armor',
     'main_site',
-    'debug_toolbar',
+    'items',
 ]
 
 MIDDLEWARE = [
@@ -40,8 +45,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+if not TESTING:
+    INSTALLED_APPS += [
+        'debug_toolbar',
+    ]
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
+
 
 ROOT_URLCONF = 'starfieldwebz.urls'
 

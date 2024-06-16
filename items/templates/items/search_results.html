@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Search Results.</title>
+</head>
+<body>
+    <h1>Item Search Results.</h1>
+    <form method="GET" action="{% url 'items:items_search' %}">
+        <input type="text" name="query" placeholder="Search by weapon name">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+        {% for item in item_name_results %}
+            <li>{{ item.item_name }} - Work bench: {{ item.work_bench }}</li>
+        {% empty %}
+            <li>No items found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

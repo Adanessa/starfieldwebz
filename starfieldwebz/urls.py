@@ -7,5 +7,6 @@ urlpatterns = [
     path('', main_views.index, name="index"),
     path('weapons/', include('weapons.urls')),
     path('armor/', include('armor.urls')),
+    path('items/', include('items.urls')),
     path("__debug__/", include("debug_toolbar.urls")),
 ]

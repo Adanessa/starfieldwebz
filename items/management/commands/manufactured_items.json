@@ -1,0 +1,570 @@
+{
+    "manufactured_items": [
+        {
+            "item_name": "Adaptive Frame",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "Aluminium(Al)",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Iron(Fe)",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Aldumite Drilling Rig",
+            "work_bench": "Multiplex Fabricator",
+            "special_projects_rank": "4",
+            "crafting_materials": [
+                {
+                    "resource_name": "Aldumite(Ad)",
+                    "quantity": 4
+                },
+                {
+                    "resource_name": "Ceasium(Cs)",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "Drilling Rig",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Microsend Regulator",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Austenitic Manifold",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "Iron(Fe)",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "Nickel(Ni)",
+                    "quantity": 2
+                }
+            ]
+        },
+        {
+            "item_name": "Comm Relay",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "Isocentered Magnet",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Tau Grade Rheostat",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Control Rod",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "3",
+            "crafting_materials": [
+                {
+                    "resource_name": "Austenitic Manifold",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Dysprosium",
+                    "quantity": 3
+                },
+                {
+                    "resource_name": "Isotopic Coolant",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Drilling Rig",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "2",
+            "crafting_materials": [
+                {
+                    "resource_name": "Lubricant",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "Reactive Gauge",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Tungsten",
+                    "quantity": 3
+                }
+            ]
+        },
+        {
+            "item_name": "Indicite Wafer",
+            "work_bench": "multiplex fabricator",
+            "special_projects_rank": "4",
+            "crafting_materials": [
+                {
+                    "resource_name": "Caesium",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "Indicite",
+                    "quantity": 4
+                },
+                {
+                    "resource_name": "Semimetal Wafer",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Solvent",
+                    "quantity": 2
+                }
+            ]
+        },
+        {
+            "item_name": "Isocentered Magnet",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "cobalt",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "nickel",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Isotopic Coolant",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "ionic liquids",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "tetrafluorides",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Mag Pressure Tank",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "Aluminium(Al)",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "nickel",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Microsecond Regulator",
+            "work_bench": "multiplex fabricator",
+            "special_projects_rank": "3",
+            "crafting_materials": [
+                {
+                    "resource_name": "europium",
+                    "quantity": 4
+                },
+                {
+                    "resource_name": "lithium",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "supercooled magnet",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "tau grade rheostat",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Molecular Sieve",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "2",
+            "crafting_materials": [
+                {
+                    "resource_name": "Ionic Liquids",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "Mag Pressure Tank",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Membrane",
+                    "quantity": 2
+                }
+            ]
+        },
+        {
+            "item_name": "Monopropellant",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "alkanes",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "mag pressure tank",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "reactive gauge",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Nuclear Fuel Rod",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "3",
+            "crafting_materials": [
+                {
+                    "resource_name": "semimetal wafer",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "solvent",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "uranium",
+                    "quantity": 3
+                }
+            ]
+        },
+        {
+            "item_name": "Paramagnon Conductor",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "2",
+            "crafting_materials": [
+                {
+                    "resource_name": "gold",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "neodymium",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "zero wire",
+                    "quantity": 3
+                }
+            ]
+        },
+        {
+            "item_name": "Polytextile",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "cosmetic",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "fiber",
+                    "quantity": 2
+                }
+            ]
+        },
+        {
+            "item_name": "Positron Battery",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "2",
+            "crafting_materials": [
+                {
+                    "resource_name": "antimony",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "tau grade rheostat",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "vanadium",
+                    "quantity": 2
+                }
+            ]
+        },
+        {
+            "item_name": "Power Circuit",
+            "work_bench": "multiplex fabricator",
+            "special_projects_rank": "3",
+            "crafting_materials": [
+                {
+                    "resource_name": "palladium",
+                    "quantity": 4
+                },
+                {
+                    "resource_name": "paramagnon conductor",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "polymer",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "positron battery",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Reactive Gauge",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "aluminium",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "copper",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Rothicite Magnet",
+            "work_bench": "multiplex fabricator",
+            "special_projects_rank": "4",
+            "crafting_materials": [
+                {
+                    "resource_name": "lithium",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "rothicite",
+                    "quantity": 4
+                },
+                {
+                    "resource_name": "semimetal wafer",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "supercooled magnet",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Semimetal Wafer",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "2",
+            "crafting_materials": [
+                {
+                    "resource_name": "antimony",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "gold",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "zero wire",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Sterile Nanotubes",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "3",
+            "crafting_materials": [
+                {
+                    "resource_name": "molecular sieve",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "solvent",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "vanadium",
+                    "quantity": 2
+                }
+            ]
+        },
+        {
+            "item_name": "Substrate Molecule Sieve",
+            "work_bench": "multiplex fabricator",
+            "special_projects_rank": "4",
+            "crafting_materials": [
+                {
+                    "resource_name": "Biosuppressant",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "Memory Substrate",
+                    "quantity": 3
+                },
+                {
+                    "resource_name": "Molecular Sieve",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Sterile Nanotubes",
+                    "quantity": 2
+                }
+            ]
+        },
+        {
+            "item_name": "Supercooled Magnet",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "2",
+            "crafting_materials": [
+                {
+                    "resource_name": "isocentered magnet",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "isotopic coolant",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "neodymium",
+                    "quantity": 3
+                }
+            ]
+        },
+        {
+            "item_name": "Tasine Superconductor",
+            "work_bench": "multiplex fabricator",
+            "special_projects_rank": "4",
+            "crafting_materials": [
+                {
+                    "resource_name": "palladium",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "Paramagnon Conductor",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "polymer",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "tasine",
+                    "quantity": 4
+                }
+            ]
+        },
+        {
+            "item_name": "Tau Grade Rheostat",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "beryllium",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "copper",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Veryl-Treated manifold",
+            "work_bench": "multiplex fabricator",
+            "special_projects_rank": "4",
+            "crafting_materials": [
+                {
+                    "resource_name": "Austenitic Manifold",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Lubricant",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "veryl",
+                    "quantity": 4
+                },
+                {
+                    "resource_name": "ytterbium",
+                    "quantity": 2
+                }
+            ]
+        },
+        {
+            "item_name": "Vytinium Fuel Rod",
+            "work_bench": "multiplex fabricator",
+            "special_projects_rank": "4",
+            "crafting_materials": [
+                {
+                    "resource_name": "indicite wafer",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "nuclear fuel rod",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "plutonium",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "vytinium",
+                    "quantity": 4
+                }
+            ]
+        },
+        {
+            "item_name": "zero wire",
+            "work_bench": "simple fabricator",
+            "special_projects_rank": "",
+            "crafting_materials": [
+                {
+                    "resource_name": "copper",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "silver",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "item_name": "Zero-G Gimbal",
+            "work_bench": "compound fabricator",
+            "special_projects_rank": "2",
+            "crafting_materials": [
+                {
+                    "resource_name": "Isocentered Magnet",
+                    "quantity": 1
+                },
+                {
+                    "resource_name": "Lubricant",
+                    "quantity": 2
+                },
+                {
+                    "resource_name": "tantalum",
+                    "quantity": 2
+                }
+            ]
+        }
+    ]
+}
