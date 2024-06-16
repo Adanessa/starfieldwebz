@@ -6,8 +6,8 @@
 </head>
 <body>
     <h1>Item Search Results.</h1>
-    <form method="GET" action="{% url 'items:items_search' %}">
-        <input type="text" name="query" placeholder="Search by weapon name">
+    <form method="GET" action="{% url 'items:item_search' %}">
+        <input type="text" name="query" placeholder="Search by item name" value="{{ query }}">
         <button type="submit">Search</button>
     </form>
     <ul>
