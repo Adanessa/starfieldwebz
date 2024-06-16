@@ -8,5 +8,6 @@ urlpatterns = [
     path('weapons/', include('weapons.urls')),
     path('armor/', include('armor.urls')),
     path('items/', include('items.urls')),
+    path('planets/', include('planets.urls')),
     path("__debug__/", include("debug_toolbar.urls")),
 ]

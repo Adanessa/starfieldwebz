@@ -334,13 +334,6 @@ class Powers(models.Model):
         db_table = 'powers'
 
 
-class Systems(models.Model):
-    name = models.CharField(unique=True, max_length=255, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'systems'
-
 
 class Weapons(models.Model):
     name = models.TextField(blank=True, null=True)
