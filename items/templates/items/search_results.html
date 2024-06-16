@@ -2,20 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Item Search Results.</title>
+    <title>Search Results.</title>
 </head>
 <body>
-    <h1>Item Search Results.</h1>
-    <form method="GET" action="{% url 'items:item_search' %}">
-        <input type="text" name="query" placeholder="Search by item name" value="{{ query }}">
-        <button type="submit">Search</button>
-    </form>
+    <h1>Materials Needed</h1>
     <ul>
-        {% for item in item_name_results %}
-            <li>{{ item.item_name }} - Work bench: {{ item.work_bench }}</li>
+        {% for material, quantity in materials_needed.items %}
+            <li>{{ material }}: {{ quantity }}</li>
         {% empty %}
-            <li>No items found.</li>
+            <li>No materials needed.</li>
         {% endfor %}
     </ul>
+    <a href="{% url 'items:search_items' %}">Back to search</a>
 </body>
 </html>
