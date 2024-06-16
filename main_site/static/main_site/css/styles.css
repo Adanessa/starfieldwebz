@@ -50,10 +50,13 @@ main {
 
 /* Example section styles */
 section {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    background-image: url('../../main_site/images/sarah_01.png');
+    background-size: cover;
+    background-position: center;
+    border: 3px dashed #9933ff;
+    font-family: 'Comic sans MS', cursive;
+    padding: 15px;
+    text-transform: uppercase;
 }
 
 /* Footer styling */
@@ -62,4 +65,18 @@ footer {
     text-align: center;
     background-color: #333;
     color: white;
+}
+
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    17% { color: #ff7f00; }
+    34% { color: #ffff00; }
+    51% { color: #00ff00; }
+    68% { color: #0000ff; }
+    85% { color: #4b0082; }
+    100% { color: #8b00ff; }
+}
+
+.flashing-text {
+    animation: rainbow 3s infinite;
 }
