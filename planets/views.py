@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from .forms import ResourceForm
 from .models import Planets, Systems
+
 
 def resource_search(request):
     if request.method == 'POST':
@@ -32,3 +34,13 @@ def resource_search(request):
         form = ResourceForm()
 
     return render(request, 'planets/resource_search.html', {'form': form})
+
+
+
+def planet_table(request):
+    planets_list = Planets.objects.all()  # Fetch all planets from the database
+    paginator = Paginator(planets_list, 50)
+    
+    page_number = request.GET.get('page')
+    planets = paginator.get_page(page_number)
+    return render(request, 'planets/planet_table.html', {'planets': planets})

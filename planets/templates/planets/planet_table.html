@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet Table</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main_site/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <!-- Background image is set via CSS, so no need for img tag -->
+        </div>
+        <h1>Starfield Shmawshmield</h1>
+        <nav>
+            <a href="{% url "weapons:weapon_search" %}">
+                <img src="{% static 'main_site/images/weapon_icon.png' %}" alt="Weapon Icon"> Search for Weapons</a>
+            <a href="{% url 'weapons:display_all_items' %}">View All Items</a>
+        </nav>
+    </header>
+
+    <main class="planet-table-container">
+        <table class="planet-table">
+            <thead>
+                <tr>
+                    <th>System Name</th>
+                    <th>Planet Name</th>
+                    <th>Type</th>
+                    <th>Gravity</th>
+                    <th>Temperature</th>
+                    <th>Atmosphere</th>
+                    <!-- Add more headers as needed for other attributes -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for planet in planets %}
+                    <tr>
+                        <td>{{ planet.system.name }}</td>
+                        <td>{{ planet.name }}</td>
+                        <td>{{ planet.type }}</td>
+                        <td>{{ planet.gravity }}</td>
+                        <td>{{ planet.temperature }}</td>
+                        <td>{{ planet.atmosphere }}</td>
+                        <!-- Add more columns for other attributes -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- Pagination controls -->
+        <div class="pagination">
+            <span class="step-links">
+                {% if planets.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ planets.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ planets.number }} of {{ planets.paginator.num_pages }}.
+                </span>
+
+                {% if planets.has_next %}
+                    <a href="?page={{ planets.next_page_number }}">next</a>
+                    <a href="?page={{ planets.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Starfield Shmawshmield. All rights reserved.</p>
+    </footer>
+</body>
+</html>
