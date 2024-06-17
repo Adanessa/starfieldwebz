@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>All Items</title>
-</head>
+{% extends "base.html" %}
+{% block title %}Starfield Shmawshmield{% endblock title %}
+
+{% block content %}
+<main>
 <body>
-    <h1>All Items</h1>
     <h2>Weapons</h2>
     <ul>
         {% for weapon in weapons %}
@@ -31,4 +29,5 @@
         {% endfor %}
     </ul>
 </body>
-</html>
+</main>
+{% endblock content %}

@@ -1,68 +1,40 @@
-/* Reset default browser styles */
-body, h1, h2, h3, p, ul, ol, li {
+body, html {
+    height: 100%;
+}
+
+.bg {
+    background-image: url('images/background_01.png');
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    line-height: 1.6;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-}
-
-nav {
-    margin-top: 10px;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #555;
-    transition: background-color 0.3s ease;
-}
-
-nav a:hover {
-    background-color: #777;
-}
-
-main {
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-h2 {
-    color: #333;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 5px;
-}
-
-p {
-    margin-bottom: 15px;
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #333;
-    color: #fff;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #333;  /*lång bakgrunds-grej. Flytta till li a om du vill ha en kort vit grej*/
     position: fixed;
-    bottom: 0;
+    top: 0;
     width: 100%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #04aa6d;
 }

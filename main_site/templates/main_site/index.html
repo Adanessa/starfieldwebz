@@ -1,45 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starfield Shmawshmield</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'main_site/css/styles.css' %}">
-</head>
-<body>
-    <div class="bg">
-        <!-- Background image is set via CSS, no need for img tag here -->
-        <header>
-            <h1>Starfield Shmawshmield</h1>
-            <ul>
-                <li><a class="active" href="{% url 'main_site:index' %}">Home</a></li>
-                <li><a href="{% url 'weapons:display_all_weapons' %}">Weapons</a></li>
-                <li><a href="{% url 'armor:display_all_armor_stuff' %}">Armor</a></li>
-                <li><a href="{% url 'planets:planet_table' %}">Planets</a></li>
-                <li><a href="{% url 'planets:resource_search' %}">Resources</a></li>
-                <li style="float:right"><a class="active" href="#">About</a></li>
-            </ul>
-        </header>
-    </div>
-    <footer>
-        <p>&copy; 2024 Starfield Shmawshmield. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
 
+{% block title %}App1 - Starfield Shmawshmield{% endblock %}
 
-
-
-
-
-<!--
-            <nav>
-                <a href="{% url "weapons:weapon_search" %}">
-                    <img src="{% static 'main_site/images/weapon_icon.png' %}" alt="Weapon Icon">
-                </a>
-                <a href="{% url 'armor:display_all_armor_stuff' %}">
-                    <img src="{% static 'main_site/images/armor_icon.png' %}" alt="Armor Icon">
-                </a>
-            </nav>
--->
+{% block content %}
+<main>
+    <h2>This is the index.html</h2>
+    <p>Write stuff about Todd Howard here..</p>
+</main>
+{% endblock %}
