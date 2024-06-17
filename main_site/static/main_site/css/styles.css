@@ -46,8 +46,6 @@ header nav a {
 /* Main content styling */
 main {
     padding: 20px;
-    margin-top: 100vh; /* Push main content below the header */
-    z-index: 2; /* Ensure main content is above the banner */
 }
 
 /* Example section styles */
@@ -61,6 +59,28 @@ section {
     text-transform: uppercase;
 }
 
+/* Footer styling */
+footer {
+    padding: 10px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    17% { color: #ff7f00; }
+    34% { color: #ffff00; }
+    51% { color: #00ff00; }
+    68% { color: #0000ff; }
+    85% { color: #4b0082; }
+    100% { color: #8b00ff; }
+}
+
+.flashing-text {
+    animation: rainbow 3s infinite;
+}
+
 /* Styles specific to the planet table */
 .planet-table-container {
     padding: 20px;
@@ -68,9 +88,12 @@ section {
     z-index: 2; /* Ensure it's above the banner */
 }
 
-.planet-table-container table.planet-table {
+.planet-table-container table.planet-table td {
+    background-color: #f0f0f0;
+    color: black;
     width: 100%;
     border-collapse: collapse;
+
 }
 
 .planet-table-container table.planet-table th,
@@ -94,26 +117,4 @@ section {
     margin: 0 5px;
     text-decoration: none;
     color: #333;
-}
-
-/* Footer styling */
-footer {
-    padding: 10px;
-    text-align: center;
-    background-color: #333;
-    color: white;
-}
-
-@keyframes rainbow {
-    0% { color: #ff0000; }
-    17% { color: #ff7f00; }
-    34% { color: #ffff00; }
-    51% { color: #00ff00; }
-    68% { color: #0000ff; }
-    85% { color: #4b0082; }
-    100% { color: #8b00ff; }
-}
-
-.flashing-text {
-    animation: rainbow 3s infinite;
 }
