@@ -8,34 +8,38 @@
     <link rel="stylesheet" href="{% static 'main_site/css/styles.css' %}">
 </head>
 <body>
-    <div class="banner">
+    <div class="bg">
         <!-- Background image is set via CSS, no need for img tag here -->
+        <header>
+            <h1>Starfield Shmawshmield</h1>
+            <ul>
+                <li><a class="active" href="{% url 'main_site:index' %}">Home</a></li>
+                <li><a href="{% url 'weapons:display_all_weapons' %}">Weapons</a></li>
+                <li><a href="{% url 'armor:display_all_armor_stuff' %}">Armor</a></li>
+                <li><a href="{% url 'planets:planet_table' %}">Planets</a></li>
+                <li><a href="{% url 'planets:resource_search' %}">Resources</a></li>
+                <li style="float:right"><a class="active" href="#">About</a></li>
+            </ul>
+        </header>
     </div>
-    <header>
-        <h1>Starfield Shmawshmield</h1>
-        <nav>
-            <a href="{% url "weapons:weapon_search" %}">
-                <img src="{% static 'main_site/images/weapon_icon.png' %}" alt="Weapon Icon"></a>
-            <a href="{% url 'weapons:display_all_items' %}">View All Items</a>
-            <a href="{% url 'armor:display_all_armor_stuff' %}">
-                <img src="{% static 'main_site/images/armor_icon.png' %}" alt="Armor Icon"></a>
-        </nav>
-    </header>
-
-    <main>
-        <section>
-            <h2 class="flashing-text">Interesting Starfield Stuffs Goes Here!</h2>
-            <p>This is where I will copy+paste interesting stuff about Starfield.</p>
-        </section>
-
-        <section>
-            <h2 class="flashing-text">Look At All These Guns!!!!</h2>
-            <p>Explore a vast array of weapons in Starfield</p>
-        </section>
-    </main>
-
     <footer>
         <p>&copy; 2024 Starfield Shmawshmield. All rights reserved.</p>
     </footer>
 </body>
 </html>
+
+
+
+
+
+
+<!--
+            <nav>
+                <a href="{% url "weapons:weapon_search" %}">
+                    <img src="{% static 'main_site/images/weapon_icon.png' %}" alt="Weapon Icon">
+                </a>
+                <a href="{% url 'armor:display_all_armor_stuff' %}">
+                    <img src="{% static 'main_site/images/armor_icon.png' %}" alt="Armor Icon">
+                </a>
+            </nav>
+-->

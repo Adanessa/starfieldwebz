@@ -9,18 +9,6 @@
     <link rel="stylesheet" href="{% static 'planets/css/styles.css' %}">
 </head>
 <body>
-    <header>
-        <div class="banner">
-            <!-- Background image is set via CSS, so no need for img tag -->
-        </div>
-        <h1>Starfield Shmawshmield</h1>
-        <nav>
-            <a href="{% url "weapons:weapon_search" %}">
-                <img src="{% static 'main_site/images/weapon_icon.png' %}" alt="Weapon Icon"> Search for Weapons</a>
-            <a href="{% url 'weapons:display_all_items' %}">View All Items</a>
-        </nav>
-    </header>
-
     <main>
         <div class="planet-table-container">
             <table class="planet-table">

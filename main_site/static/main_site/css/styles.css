@@ -1,82 +1,40 @@
-/* Reset some default styles */
 body, html {
-    margin: 0;
-    padding: 0;
     height: 100%;
 }
 
-/* Banner with background image */
-.banner {
+.bg {
+    background-image: url('../../main_site/images/background_01.png');
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #333;  /*lång bakgrunds-grej. Flytta till li a om du vill ha en kort vit grej*/
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100vh; /* Full viewport height */
-    background-image: url('../../main_site/images/background_01.png'); /* Adjust path as needed */
-    background-size: cover;
-    background-position: center;
-    z-index: -1; /* Ensure it's behind other content */
 }
 
-/* Header styles */
-header {
-    position: relative; /* Ensure it stacks properly with banner */
-    padding: 20px;
-    z-index: 2; /* Ensure it's above the banner */
-    background-color: rgba(0, 0, 0, 0.5); /* Example semi-transparent background */
+li {
+    float: left;
+}
+
+li a {
+    display: block;
     color: white;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    margin: 0;
-}
-
-header nav {
-    margin-top: 10px;
-}
-
-header nav a {
-    color: white;
-    text-decoration: none;
-    margin-right: 20px;
-    font-size: 1.2rem;
-}
-
-/* Main content styling */
-main {
-    padding: 20px;
-}
-
-/* Example section styles */
-section {
-    background-image: url('../../main_site/images/sarah_01.png');
-    background-size: cover;
-    background-position: center;
-    border: 3px dashed #9933ff;
-    font-family: 'Comic sans MS', cursive;
-    padding: 15px;
-    text-transform: uppercase;
-}
-
-/* Footer styling */
-footer {
-    padding: 10px;
     text-align: center;
-    background-color: #333;
-    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
-@keyframes rainbow {
-    0% { color: #ff0000; }
-    17% { color: #ff7f00; }
-    34% { color: #ffff00; }
-    51% { color: #00ff00; }
-    68% { color: #0000ff; }
-    85% { color: #4b0082; }
-    100% { color: #8b00ff; }
+li a:hover:not(.active) {
+    background-color: #111;
 }
 
-.flashing-text {
-    animation: rainbow 3s infinite;
+.active {
+    background-color: #04aa6d;
 }
