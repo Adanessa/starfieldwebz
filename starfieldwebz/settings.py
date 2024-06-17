@@ -131,8 +131,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / 'static' / 'css',
     BASE_DIR / 'main_site' / 'static',
+    BASE_DIR / 'weapons' / 'static',
 ]
 
 # Default primary key field type

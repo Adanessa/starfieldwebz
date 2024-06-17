@@ -3,32 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>All Items</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'weapons/css/styles.css' %}">
 </head>
 <body>
-    <h1>All Items</h1>
-    <h2>Weapons</h2>
-    <ul>
-        {% for weapon in weapons %}
-        <li>{{ weapon.name }} - Rarity: {{ weapon.rarity }}</li>
-        {% empty %}
-            <li>No weapons found.</li>
-        {% endfor %}
-    </ul>
-    <h2>Weapon Mod Prefixes</h2>
-    <ul>
-        {% for mod in weapon_mod_prefixes %}
-            <li>{{ mod.name }} - Condition: {{ mod.condition }}</li>
-        {% empty %}
-            <li>No mod prefixes found.</li>    
-        {% endfor %}
-    </ul>
-    <h2>Weapon Perks</h2>
-    <ul>
-        {% for perk in weapon_perks %}
-            <li>{{ perk.name }} - Effect: {{ perk.effect }}</li>
-        {% empty %}
-            <li>No perks found</li>
-        {% endfor %}
-    </ul>
+    <div class="bg">
+        <main>
+            <div class="weapon-table-container">
+                <table class="weapon-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Rarity</th>
+                        <th>Type</th>
+                        <th>Damage</th>
+                        <th>Ammunition</th>
+                        <th>Mag Size</th>
+                        <th>Fire Rate</th>
+                        <th>Range</th>
+                        <th>Accuracy</th>
+                        <th>Mass</th>
+                        <th>Mod Capacity</th>
+                    </tr>
+                    <tr>
+                        {% for weapon in weapons %}
+                        <td>{{ weapon.name }}</td>
+                        <td>{{ weapon.rarity }}</td>
+                        <td>{{ weapon.type }}</td>
+                        <td>{{ weapon.dmg }}</td>
+                        <td>{{ weapon.ammo }}</td>
+                        <td>{{ weapon.mag }}</td>
+                        <td>{{ weapon.fire_rate }}</td>
+                        <td>{{ weapon.range }}</td>
+                        <td>{{ weapon.accuracy }}</td>
+                        <td>{{ weapon.mass }}</td>
+                        <td>{{ weapon.mod_capacity }}</td>
+                    </tr>
+                </table>
+                    {% endfor %}
+            </div>
+        </main>
+    </div>
 </body>
 </html>

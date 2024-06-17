@@ -1,0 +1,16 @@
+body, html {
+    height: 100%;
+}
+
+.bg {
+    background-image: url('../../main_site/images/background_01.png');
+    height: 100%;
+}
+
+table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+th, td {
+    background-color: #969696;
+}
