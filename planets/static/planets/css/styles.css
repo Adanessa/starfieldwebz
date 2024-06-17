@@ -1,0 +1,41 @@
+/* Styles specific to the planet table */
+.planet-table-container {
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.planet-table-container table.planet-table {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.planet-table-container table.planet-table th,
+.planet-table-container table.planet-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.planet-table-container table.planet-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.planet-table-container table.planet-table td {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.planet-table-container .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.planet-table-container .pagination .step-links a,
+.planet-table-container .pagination .step-links span {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #333;
+}

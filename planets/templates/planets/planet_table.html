@@ -31,7 +31,17 @@
                         <th>Gravity</th>
                         <th>Temperature</th>
                         <th>Atmosphere</th>
-                        <!-- Add more headers as needed for other attributes -->
+                        <th>Magnetosphere</th>
+                        <th>Water</th>
+                        <th>Biomes</th>
+                        <th>Traits</th>
+                        <th>Fauna</th>
+                        <th>Flora</th>
+                        <th>Resources</th>
+                        <th>Day Length (in Earth Days)</th>
+                        <th>Domesticable</th>
+                        <th>Planetary Habitation Required</th>
+                        <th>Gatherable</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,7 +53,15 @@
                             <td>{{ planet.gravity }}</td>
                             <td>{{ planet.temperature }}</td>
                             <td>{{ planet.atmosphere }}</td>
-                            <!-- Add more columns for other attributes -->
+                            <td>{{ planet.magnetosphere }}</td>
+                            <td>{{ planet.water }}</td>
+                            <td>{{ planet.biomes }}</td>
+                            <td>{{ planet.traits }}</td>
+                            <td>{{ planet.fauna }}</td>
+                            <td>{{ planet.flora }}</td>
+                            <td>{{ planet.domesticable }}</td>
+                            <td>{{ planet.hab_rank }}</td>
+                            <td>{{ planet.gatherable }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
