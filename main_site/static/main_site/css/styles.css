@@ -22,7 +22,7 @@ body, html {
 header {
     position: relative; /* Ensure it stacks properly with banner */
     padding: 20px;
-    z-index: 1; /* Ensure it's above the banner */
+    z-index: 2; /* Ensure it's above the banner */
     background-color: rgba(0, 0, 0, 0.5); /* Example semi-transparent background */
     color: white;
 }

@@ -1,17 +1,36 @@
 /* Styles specific to the planet table */
 .planet-table-container {
-    padding: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     z-index: 2;
+    width: 75%;
+    height: 500px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.planet-table {
     width: 100%;
+    border-collapse: center;
+}
+
+.planet-table th, .planet-table td {
+    padding: 2px;
+    text-align: center;
+    background-color: white;
+    width: 50%;
 }
 
 .planet-table-container table.planet-table {
+    size: 50%;
     width: 50%;
     margin: 0 auto;
 }
-
-.planet-table-container table.planet-table th,
+/*
+ .planet-table-container table.planet-table th,
 .planet-table-container table.planet-table td {
     border: 1px solid #ddd;
     padding: 8px;
@@ -39,3 +58,4 @@
     text-decoration: none;
     color: #333;
 }
+*/
