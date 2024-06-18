@@ -1,5 +1,19 @@
 .planet-table-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+  }
+  
+  .planet-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .planet-table td, .planet-table th {
+    padding: 8px;
+    border: 1px solid #ccc;
+    max-width: 100px; /* Set max-width as desired */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
