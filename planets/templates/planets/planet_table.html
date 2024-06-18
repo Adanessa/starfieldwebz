@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planet Table</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'main_site/css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'planets/css/styles.css' %}">
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Planets{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'main_site/css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'planets/css/styles.css' %}">
     <main>
         <div class="planet-table-container">
             <table class="planet-table">
@@ -78,9 +74,5 @@
             {% endif %}
         </div>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Starfield Shmawshmield. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+{% endblock content %}
+ 
