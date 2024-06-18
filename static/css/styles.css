@@ -1,0 +1,40 @@
+body, html {
+    height: 100%;
+}
+
+.bg {
+    background-image: url('/static/images/background_01.png');
+    height: 100%;
+}
+
+ul.menu-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #333;  /*lång bakgrunds-grej. Flytta till li a om du vill ha en kort vit grej*/
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+ul.menu-bar li {
+    float: left;
+}
+
+ul.menu-bar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.menu-bar li a:hover:not(.active) {
+    background-color: #111;
+}
+
+ul.menu-bar .active {
+    background-color: #04aa6d;
+}
