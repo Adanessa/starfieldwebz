@@ -1,47 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>All Items</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'weapons/css/styles.css' %}">
-</head>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Weapons - Starfield Shmawshmield{% endblock title %}Weapons - Starfield Shmawshmield
+{% block content %}
+<link rel="stylesheet" href="{% static 'weapons/css/styles.css' %}">
+
 <body>
     <div class="bg">
         <main>
             <div class="weapon-table-container">
                 <table class="weapon-table">
-                    <tr>
-                        <th>Name</th>
-                        <th>Rarity</th>
-                        <th>Type</th>
-                        <th>Damage</th>
-                        <th>Ammunition</th>
-                        <th>Mag Size</th>
-                        <th>Fire Rate</th>
-                        <th>Range</th>
-                        <th>Accuracy</th>
-                        <th>Mass</th>
-                        <th>Mod Capacity</th>
-                    </tr>
-                    <tr>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Rarity</th>
+                            <th>Type</th>
+                            <th>Damage</th>
+                            <th>Ammunition</th>
+                            <th>Mag Size</th>
+                            <th>Fire Rate</th>
+                            <th>Range</th>
+                            <th>Accuracy</th>
+                            <th>Mass</th>
+                            <th>Mod Capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         {% for weapon in weapons %}
-                        <td>{{ weapon.name }}</td>
-                        <td>{{ weapon.rarity }}</td>
-                        <td>{{ weapon.type }}</td>
-                        <td>{{ weapon.dmg }}</td>
-                        <td>{{ weapon.ammo }}</td>
-                        <td>{{ weapon.mag }}</td>
-                        <td>{{ weapon.fire_rate }}</td>
-                        <td>{{ weapon.range }}</td>
-                        <td>{{ weapon.accuracy }}</td>
-                        <td>{{ weapon.mass }}</td>
-                        <td>{{ weapon.mod_capacity }}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ weapon.name }}</td>
+                            <td>{{ weapon.rarity }}</td>
+                            <td>{{ weapon.type }}</td>
+                            <td>{{ weapon.dmg }}</td>
+                            <td>{{ weapon.ammo }}</td>
+                            <td>{{ weapon.mag }}</td>
+                            <td>{{ weapon.fire_rate }}</td>
+                            <td>{{ weapon.range }}</td>
+                            <td>{{ weapon.accuracy }}</td>
+                            <td>{{ weapon.mass }}</td>
+                            <td>{{ weapon.mod_capacity }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
-                    {% endfor %}
             </div>
         </main>
     </div>
 </body>
-</html>
+{% endblock content %}
