@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Starfield Shmawshmield</title>{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h1>Starfield Shmawshmield</h1>
+        <p>Write something cool about Todd Howard</p>
+    </div>
+    <div class="topnav">
+        <a href="{% url 'main_site:index' %}">Home</a>
+        <a href="{% url 'weapons:display_all_weapons' %}">Weapons</a>
+        <a href="{% url 'armor:display_all_armor_stuff' %}">Armor</a>
+        <a href="{% url 'planets:planet_table' %}">Planets</a>
+        <a href="{% url 'planets:resource_search' %}">Resources</a>
+    </div>
+    <div class="row">
+        <div class="column side">
+            <h2>Add more stuff about Todd.</h2>
+            <p>Starfield/todd info</p>
+        </div>
+        <div class="column middle">
+            <h2>Main content here (Starfield stuff)</h2>
+            <p>Information here</p>
+            <p>More info here maybe?</p>
+        </div>
+        <div class="column side">
+            
+        </div>
+
+    </div>
+</body>
+</html>
