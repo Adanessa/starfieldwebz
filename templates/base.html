@@ -8,18 +8,33 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <div class="hero-image"></div> 
-        <ul class="menu-bar">
-            <li><a class="active" href="{% url 'main_site:index' %}">Home</a></li>
-            <li><a href="{% url 'weapons:display_all_weapons' %}">Weapons</a></li>
-            <li><a href="{% url 'armor:display_all_armor_stuff' %}">Armor</a></li>
-            <li><a href="{% url 'planets:planet_table' %}">Planets</a></li>
-            <li><a href="{% url 'planets:resource_search' %}">Resources</a></li>
-            <li style="float:right"><a class="active" href="#">About</a></li>
-        </ul>
-        {% block content %}
-        <!-- Content for each page will go here -->
-        {% endblock %}
+<div class="hero-image"></div> 
+    <ul>
+        <li><a href="{% url 'main_site:index' %}">Home</a></li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Armor</a>
+            <div class="dropdown-content">
+                <a href="{% url 'armor:display_all_armor_stuff' %}">Display Armor</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Weapons</a>
+            <div class="dropdown-content">
+                <a href="{% url 'weapons:display_all_weapons' %}">Weapons</a>
+                <a href="{% url 'weapons:weapon_search' %}">Search Weapons</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Planets and resources</a>
+            <div class="dropdown-content">
+                <a href="{% url 'planets:planet_table' %}">Planet list</a>
+                <a href="{% url 'planets:resource_search' %}">Search for resources</a>
+            </div>
+        </li>
+    </ul>
+    {% block content %}
+    <!-- Content for each page will go here -->
+    {% endblock %}
     <footer>
         <p>&copy; 2024 Starfield Shmawshmield. All rights reserved.</p>
     </footer>
