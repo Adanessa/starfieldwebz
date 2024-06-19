@@ -1,6 +1,6 @@
 .navbar {
     overflow: visible; /* Ensure dropdown visibility */
-    background-color: #333;
+    background-color: #000000;
     z-index: 1000; /* Ensure navbar is above other content */
     width: 100%;
     margin: 0;
@@ -12,7 +12,7 @@
 .navbar a {
     float: left;
     display: block;
-    color: #ad0b0b;
+    color: #ffffff;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -21,13 +21,8 @@
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-    background: #04aa6d;
-    color: white;
-}
-
-.navbar a.active {
-    background-color: #04aa6d;
-    color: white;
+    background: #262f3b;
+    color: rgb(255, 255, 255);
 }
 
 .dropdown {
@@ -40,7 +35,7 @@
     font-size: 17px;
     border: none;
     outline: none;
-    color: rgb(26, 6, 203);
+    color: white;
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit;
@@ -72,7 +67,7 @@
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #262f3b;
 }
 
 .dropdown:hover .dropdown-content {

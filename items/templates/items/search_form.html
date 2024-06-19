@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search Items</title>
-</head>
+{% extends "base.html" %}
+{% block title %}Search for le itams{% endblock title %}
+{% block content %}
+
 <body>
     <h1>Search Items</h1>
     <form method="GET" action="{% url 'items:search_results' %}">
@@ -11,4 +9,4 @@
         <button type="submit">Search</button>
     </form>
 </body>
-</html>
+{% endblock content %}

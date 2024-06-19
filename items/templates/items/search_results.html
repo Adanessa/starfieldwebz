@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search Results</title>
-</head>
+{% extends "base.html" %}
+{% block title %}Materialooo El neeedo{% endblock title %}
+{% block content %}
 <body>
     <h1>Materials Needed</h1>
     <ul>
@@ -15,4 +12,4 @@
     </ul>
     <a href="{% url 'items:search_form' %}">Back to search</a>
 </body>
-</html>
+{% endblock content %}

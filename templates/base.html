@@ -11,7 +11,6 @@
 <body>
 <div class="header hero-image">
 </div> 
-
 <div class="navbar" id="navbar">
     <a href="{% url 'main_site:index' %}" class="dropbtn">Home</a>
     <div class="dropdown">
@@ -26,7 +25,21 @@
             <a href="{% url 'weapons:display_all_weapons' %}">Weapons</a>
             <a href="{% url 'weapons:weapon_search' %}">Search Weapons</a>
         </div>
-    </div>  
+    </div>
+    <div class="dropdown">
+        <div class="dropbtn">Planets</div>
+        <div class="dropdown-content">
+            <a href="{% url 'planets:planet_table' %}">Planets</a>
+            <a href="{% url 'planets:resource_search' %}">Search for resources</a>
+        </div>
+    </div>
+    
+    <div class="dropdown">
+        <div class="dropbtn">Items</div>
+        <div class="dropdown-content">
+            <a href="{% url 'items:search_form' %}">Item Search</a>
+        </div>
+    </div>
 </div>
 
 {% block content %}
