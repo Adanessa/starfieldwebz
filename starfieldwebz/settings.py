@@ -135,6 +135,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'main_site/static/main_site/css'),
     os.path.join(BASE_DIR, 'weapons/static/weapons/css'),
+    os.path.join(BASE_DIR, 'main_site/static/main_site/images'),
 ]
 
 

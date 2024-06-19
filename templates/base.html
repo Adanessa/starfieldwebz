@@ -8,17 +8,15 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-        <header>
-            <ul class="menu-bar">
-                <li><a class="active" href="{% url 'main_site:index' %}">Home</a></li>
-                <li><a href="{% url 'weapons:display_all_weapons' %}">Weapons</a></li>
-                <li><a href="{% url 'armor:display_all_armor_stuff' %}">Armor</a></li>
-                <li><a href="{% url 'planets:planet_table' %}">Planets</a></li>
-                <li><a href="{% url 'planets:resource_search' %}">Resources</a></li>
-                <li style="float:right"><a class="active" href="#">About</a></li>
-            </ul>
-        </header>
-        <div class="hero-image"></div>    
+    <div class="hero-image"></div> 
+        <ul class="menu-bar">
+            <li><a class="active" href="{% url 'main_site:index' %}">Home</a></li>
+            <li><a href="{% url 'weapons:display_all_weapons' %}">Weapons</a></li>
+            <li><a href="{% url 'armor:display_all_armor_stuff' %}">Armor</a></li>
+            <li><a href="{% url 'planets:planet_table' %}">Planets</a></li>
+            <li><a href="{% url 'planets:resource_search' %}">Resources</a></li>
+            <li style="float:right"><a class="active" href="#">About</a></li>
+        </ul>
         {% block content %}
         <!-- Content for each page will go here -->
         {% endblock %}

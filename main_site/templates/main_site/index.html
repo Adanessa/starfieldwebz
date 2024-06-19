@@ -4,10 +4,24 @@
 {% block title %}Home - Starfield Shmawshmield{% endblock %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'main_site/css/styles.css' %}">
-
-<main>
-    <h2>Welcome to Starfield Shmawshmield!</h2>
-    <p>This is the homepage of the Starfield Shmawshmield website.</p>
-    <p>Here you can find information about weapons, armor, planets, and resources in the Starfield universe.</p>
-</main>
+<link rel="stylesheet" href="{% static 'images/' %}">
+<div class="row">
+    <div class="column side">
+        <h2>Information about Todd Howard</h2>
+        <p>Starfield/Todd</p>
+        <img src="{% static "main_site/images/happy_todd.jpg" %}" alt="Happy Todd Howard." class="side-image">
+    </div>
+    <div class="column middle">
+        <h2>Add main content. (Starfield/Todd)</h2>
+        <p>Starfield stuff here.</p>
+        <p>Maybe something about Todd Howard?</p>
+        <!--Image is licensed. Remove it to avoid going bancrupt.-->
+        <img src="{% static "main_site/images/todd_howard.jpg" %}" alt="Cute picture of Todd Howard." class="main-image">
+    </div>
+    <div class="column side">
+        <h2>Stuff about Todd but on the right side.</h2>
+        <p>Lalalalalal</p>
+        <img src="{% static "main_site/images/starfield_todd.png" %}" alt="Starfield Todd Howard" class="side-image">
+    </div>
+</div>
 {% endblock %}
