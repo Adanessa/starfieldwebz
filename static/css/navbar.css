@@ -2,13 +2,17 @@
     overflow: visible; /* Ensure dropdown visibility */
     background-color: #333;
     z-index: 1000; /* Ensure navbar is above other content */
-    position: relative; /* Ensure default position */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    float: left;
+    transition: top 0.3s ease, background-color 0.3s ease;
 }
 
 .navbar a {
     float: left;
     display: block;
-    color: #f2f2f2;
+    color: #ad0b0b;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -32,10 +36,10 @@
 }
 
 .dropdown .dropbtn {
-    font-size: 16px;
+    font-size: 17px;
     border: none;
     outline: none;
-    color: white;
+    color: rgb(26, 6, 203);
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit;
@@ -73,5 +77,6 @@
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #333; /* Ensure sticky navbar retains background color */
+    background-color: #333;
+    transition: top 0.3s ease, background-color 0.3s ease;
 }

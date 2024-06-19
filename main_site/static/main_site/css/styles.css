@@ -1,9 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
 .column {
     float: left;
 }
 
 .column.side {
-    width: 25%;
+    width: 20%;
+    margin: 10px;
 }
 
 .column.middle {
