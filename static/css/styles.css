@@ -94,6 +94,17 @@ li.dropdown {
     display: block;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #333; /* Ensure background color is set to match your navigation */
+    /* Add any other styles needed for your sticky navigation */
+}
+
+
+
 h1 {
     margin-top: 45px;
 }

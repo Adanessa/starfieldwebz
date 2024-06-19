@@ -38,5 +38,20 @@
     <footer>
         <p>&copy; 2024 Starfield Shmawshmield. All rights reserved.</p>
     </footer>
+
+    <script>
+        window.onscroll = function() {stickyNavbar()};
+
+        var navbar = document.querySelector("ul");
+        var sticky = navbar.offsetTop;
+
+        function stickyNavbar() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else{
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
 </body>
 </html>
