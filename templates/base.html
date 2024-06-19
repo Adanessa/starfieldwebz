@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="hero-image"></div> 
-    <ul>
+    <ul class="main-nav">
         <li><a href="{% url 'main_site:index' %}">Home</a></li>
         <li class="dropdown">
             <a href="javascript:void(0)" class="dropbtn">Armor</a>
@@ -42,13 +42,13 @@
     <script>
         window.onscroll = function() {stickyNavbar()};
 
-        var navbar = document.querySelector("ul");
+        var navbar = document.querySelector(".main-nav");
         var sticky = navbar.offsetTop;
 
         function stickyNavbar() {
             if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky")
-            } else{
+                navbar.classList.add("sticky");
+            } else {
                 navbar.classList.remove("sticky");
             }
         }

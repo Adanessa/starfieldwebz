@@ -11,14 +11,13 @@ header {
     margin-top: 0;  /* flötta ner sarah om du behöver */
 }
 
-
 table, th, td {
     border: 1px solid;
 }
 
 table {
     width: 50%;
-    border-collapse: collapse;  /*single border*/
+    border-collapse: collapse;  /* single border */
     background-color: rgb(143, 143, 122);
 }
 
@@ -42,20 +41,19 @@ tr:hover {
     position: relative;
 }
 
-ul {
+.main-nav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
-
 }
 
-li {
+.main-nav li {
     float: left;
 }
 
-li a, .dropbtn {
+.main-nav li a, .main-nav .dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
@@ -63,24 +61,25 @@ li a, .dropbtn {
     text-decoration: none;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
+.main-nav li a:hover, .main-nav .dropdown:hover .dropbtn {
     background-color: red;
 }
 
-li.dropdown {
+.main-nav li.dropdown {
     display: inline-block;
+    position: relative;
 }
 
-.dropdown-content {
+.main-nav .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 1001; /* Ensure it appears above the sticky navbar */
 }
 
-.dropdown-content a {
+.main-nav .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
@@ -88,27 +87,25 @@ li.dropdown {
     text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.main-nav .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
 
-.dropdown:hover .dropdown-content {
+.main-nav .dropdown:hover .dropdown-content {
     display: block;
 }
 
-.sticky {
+.main-nav.sticky {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #333; /* Ensure background color is set to match your navigation */
-    /* Add any other styles needed for your sticky navigation */
+    background-color: #333;
 }
-
-
 
 h1 {
     margin-top: 45px;
 }
-
 
 footer p {
     padding-top: 200px;
