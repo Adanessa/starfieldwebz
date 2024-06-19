@@ -6,52 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 </head>
 <body>
-<div class="hero-image"></div> 
-    <ul class="main-nav">
-        <li><a href="{% url 'main_site:index' %}">Home</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Armor</a>
-            <div class="dropdown-content">
-                <a href="{% url 'armor:display_all_armor_stuff' %}">Display Armor</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Weapons</a>
-            <div class="dropdown-content">
-                <a href="{% url 'weapons:display_all_weapons' %}">Weapons</a>
-                <a href="{% url 'weapons:weapon_search' %}">Search Weapons</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Planets and resources</a>
-            <div class="dropdown-content">
-                <a href="{% url 'planets:planet_table' %}">Planet list</a>
-                <a href="{% url 'planets:resource_search' %}">Search for resources</a>
-            </div>
-        </li>
-    </ul>
-    {% block content %}
-    <!-- Content for each page will go here -->
-    {% endblock %}
-    <footer>
-        <p>&copy; 2024 Starfield Shmawshmield. All rights reserved.</p>
-    </footer>
+<div class="header">
+    <h2>Add fine-ass-Sarah-face here.</h2>
+    <p>SAAAAAARAAAAH</p>
+</div> 
 
-    <script>
-        window.onscroll = function() {stickyNavbar()};
+<div class="navbar" id="navbar">
+    <a href="{% url 'main_site:index' %}">Home</a>
+    <div class="dropdown">
+        <button class="dropbtn">Armor</button>
+        <div class="dropdown-content">
+            <a href="{% url 'armor:display_all_armor_stuff' %}">Display Armor</a>
+        </div>
+    </div>
+    <a href="{% url 'weapons:display_all_weapons' %}">Weapons</a>
+    <a href="{% url 'weapons:weapon_search' %}">Search Weapons</a>
+</div>
 
-        var navbar = document.querySelector(".main-nav");
-        var sticky = navbar.offsetTop;
+{% block content %}
+<!-- Content for each page will go here -->
+{% endblock %}
 
-        function stickyNavbar() {
-            if (window.pageYOffset >= sticky) {
-                navbar.classList.add("sticky");
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        }
-    </script>
+<script src="{% static 'js/navbar.js' %}"></script>
+
 </body>
 </html>
