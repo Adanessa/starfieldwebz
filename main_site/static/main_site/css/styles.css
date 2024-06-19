@@ -4,11 +4,12 @@
 
 .column {
     float: left;
+    padding: 10px;
+
 }
 
 .column.side {
-    width: 20%;
-    margin: 10px;
+    width: 25%;
 }
 
 .column.middle {
@@ -34,15 +35,19 @@
 .main-image:hover, .side-image:hover {
     transform: scale(1.05);
     opacity: 0.8;
+    
 }
 
 .side-image {
+    display: block;
     max-width: 100%;
     max-width: 300px;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, opacity 0.3s ease;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media screen and (max-width: 600px) {
@@ -58,3 +63,6 @@
     margin-left: 15px;
 }
 
+h2 {
+    text-align: center;
+}

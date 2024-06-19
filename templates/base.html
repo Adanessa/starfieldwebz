@@ -9,21 +9,24 @@
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 </head>
 <body>
-<div class="header">
-    <h2>Add fine-ass-Sarah-face here.</h2>
-    <p>SAAAAAARAAAAH</p>
+<div class="header hero-image">
 </div> 
 
 <div class="navbar" id="navbar">
-    <a href="{% url 'main_site:index' %}">Home</a>
+    <a href="{% url 'main_site:index' %}" class="dropbtn">Home</a>
     <div class="dropdown">
-        <button class="dropbtn">Armor</button>
+        <div class="dropbtn">Armor</div>
         <div class="dropdown-content">
             <a href="{% url 'armor:display_all_armor_stuff' %}">Display Armor</a>
         </div>
     </div>
-    <a href="{% url 'weapons:display_all_weapons' %}">Weapons</a>
-    <a href="{% url 'weapons:weapon_search' %}">Search Weapons</a>
+    <div class="dropdown">
+        <div class="dropbtn">Weapons</div>
+        <div class="dropdown-content">
+            <a href="{% url 'weapons:display_all_weapons' %}">Weapons</a>
+            <a href="{% url 'weapons:weapon_search' %}">Search Weapons</a>
+        </div>
+    </div>  
 </div>
 
 {% block content %}
