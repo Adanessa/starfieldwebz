@@ -14,14 +14,12 @@
     <div class="item4">Right</div>
     <div class="item5">Footer</div>
     <div class="item6">{{ character.race }} - {{ character.gender }}</div>
-    <div class="item7">{{ character.faction }}</div>
+    <div class="item7"><h3>Faction - {{ character.faction }}</h3></div>
     <div class="item9">
-        <h3>Skills</h3>
-        <ul>
-            {% for skills in skills %}
-                <li>{{ skill.name }}: Level {{ skill.level }}</li>
-            {% endfor %}
-        </ul>
+        <p>Astrodynamics 4</p>
+        <p>Lasers 3</p>
+        <p>Leadership 2</p>
+        <p>Botany 1</p>
     </div>
 </div>
 {% endblock content %}

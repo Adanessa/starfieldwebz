@@ -1,7 +1,18 @@
 .item1 { grid-area: sarah; }
-.item2 { grid-area: image; }
-.item3 { grid-area: main; }
-.item4 { grid-area: right; }
+.item2 {
+  grid-area: image;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.item3 {
+  grid-area: main;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.item4 { 
+grid-area: right;
+width: 200px;
+}
 .item5 { grid-area: footer; }
 .item6 { grid-area: details; }
 .item7 { grid-area: faction; }
@@ -10,18 +21,18 @@
 .grid-container {
   display: grid;
   grid-template-areas:
-    'image sarah sarah sarah right right'
-    'image faction faction faction right right'
-    'details main main main right right'
-    'skills main main main right right'
+    'image sarah sarah right right right'
+    'image faction faction right right right'
+    'details main main right right right'
+    'skills main main right right right'
     'footer footer footer footer footer footer';
   gap: 10px;
-  background-color: #2196F3;
+  background-color: #070c0f;
   padding: 10px;
 }
 
 .grid-container > div {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: gray;
   text-align: center;
   padding: 20px 0;
   font-size: 17px;
