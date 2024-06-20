@@ -1,0 +1,36 @@
+.item1 { grid-area: sarah; }
+.item2 { grid-area: image; }
+.item3 { grid-area: main; }
+.item4 { grid-area: right; }
+.item5 { grid-area: footer; }
+.item6 { grid-area: }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'image sarah sarah sarah sarah sarah'
+    'image main main main right right'
+    'image main main main right right'
+    'image main main main right right'
+    'footer footer footer footer footer footer';
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 17px;
+}
+
+.profile-image {
+    background-size: cover; /* Ensures the background image covers the entire div */
+    background-position: center; /* Centers the background image */
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+}
+
+
