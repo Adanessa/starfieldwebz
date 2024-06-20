@@ -6,13 +6,14 @@
 .item6 { grid-area: details; }
 .item7 { grid-area: faction; }
 .item8 { grid-area: gender; }
+.item9 { grid-area: skills;}
 .grid-container {
   display: grid;
   grid-template-areas:
     'image sarah sarah sarah right right'
     'image faction faction faction right right'
     'details main main main right right'
-    'details main main main right right'
+    'skills main main main right right'
     'footer footer footer footer footer footer';
   gap: 10px;
   background-color: #2196F3;
