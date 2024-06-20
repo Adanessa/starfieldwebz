@@ -3,15 +3,16 @@
 .item3 { grid-area: main; }
 .item4 { grid-area: right; }
 .item5 { grid-area: footer; }
-.item6 { grid-area: }
-
+.item6 { grid-area: details; }
+.item7 { grid-area: faction; }
+.item8 { grid-area: gender; }
 .grid-container {
   display: grid;
   grid-template-areas:
-    'image sarah sarah sarah sarah sarah'
-    'image main main main right right'
-    'image main main main right right'
-    'image main main main right right'
+    'image sarah sarah sarah right right'
+    'image faction faction faction right right'
+    'details main main main right right'
+    'details main main main right right'
     'footer footer footer footer footer footer';
   gap: 10px;
   background-color: #2196F3;
