@@ -6,13 +6,19 @@ def sarah_morgan_detail(request):
     skills = sarah.skills.all()
     return render(request, 'sarah_morgan.html', {'character': sarah, 'skills': skills})
 
+def andreja_detail(request):
+    andreja = get_object_or_404(Character, id=4)
+    skills = andreja.skills.all()
+    return render(request, 'andreja.html', {'character': andreja, 'skills': skills})
 
-def character_info(request):
-    character_details = Character.objects.all()
-    character_skills = Skill.objects.all()
+
+
+# def character_info(request):
+#     character_details = Character.objects.all()
+#     character_skills = Skill.objects.all()
     
-    context = {
-        'character_details': character_details,
-        'character_skills': character_skills,
-    }
-    return render(request, 'characters/sarah_morgan.html')
+#     context = {
+#         'character_details': character_details,
+#         'character_skills': character_skills,
+#     }
+#     return render(request, {'sarah_morgan.html', 'andreja.html'})

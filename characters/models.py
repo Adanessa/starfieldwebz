@@ -9,13 +9,15 @@ class Character(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
-    def __str__(self):
-        return self.name
+    class Meta:
+        managed = False
+        db_table = 'characters_character'
     
 class Skill(models.Model):
     name = models.CharField(max_length=100)
     level = models.IntegerField()
     character = models.ForeignKey(Character, related_name='skills', on_delete=models.CASCADE)
     
-    def __str__(self):
-        return self.name
+    class Meta:
+        managed = False
+        db_table = 'characters_skill'

@@ -40,6 +40,13 @@
             <a href="{% url 'items:search_form' %}">Item Search</a>
         </div>
     </div>
+    <div class="dropdown">
+        <div class="dropbtn">Characters</div>
+        <div class="dropdown-content">
+            <a href="{% url 'characters:sarah_morgan_detail' %}">Sarah Morgan</a>
+            <a href="{% url 'characters:andreja_detail' %}">Andreja</a>
+        </div>
+    </div>
 </div>
 
 {% block content %}
