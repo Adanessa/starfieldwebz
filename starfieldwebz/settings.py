@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'main_site',
     'items',
     'planets',
+    'characters',
 ]
 
 MIDDLEWARE = [
@@ -133,10 +134,13 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'main_site/static/main_site/css'),
-    os.path.join(BASE_DIR, 'weapons/static/weapons/css'),
-    os.path.join(BASE_DIR, 'main_site/static/main_site/images'),
     os.path.join(BASE_DIR, 'static/js'),
+    os.path.join(BASE_DIR, 'main_site/static/main_site/css'),
+    os.path.join(BASE_DIR, 'main_site/static/main_site/images'),
+    os.path.join(BASE_DIR, 'weapons/static/weapons/css'),
+    os.path.join(BASE_DIR, 'armor/static/armor/css'),
+    os.path.join(BASE_DIR, 'characters/static/characters/css'),
+    os.path.join(BASE_DIR, 'characters/static/characters/images')
 ]
 
 

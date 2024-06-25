@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Sarah Morgan{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'characters/css/styles.css' %}">
+<div class="grid-container">
+    <div class="item1">
+        <h2>{{ character.name }}</h2>
+    </div>
+    <div class="item2">
+        <img src="{% static 'characters/images/sarah_gif_bad.gif' %}" class="profile-image">
+    </div>
+    <div class="item3">{{ character.description }}</div>  
+    <div class="item4">Right</div>
+    <div class="item5">Footer</div>
+    <div class="item6">{{ character.race }} - {{ character.gender }}</div>
+    <div class="item7"><h3>Faction - {{ character.faction }}</h3></div>
+    <div class="item9">
+        <p>Astrodynamics 4</p>
+        <p>Lasers 3</p>
+        <p>Leadership 2</p>
+        <p>Botany 1</p>
+    </div>
+</div>
+{% endblock content %}
+
+
+

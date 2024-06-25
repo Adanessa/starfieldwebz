@@ -1,5 +1,5 @@
 .weapon-table-container {
-    display: flex;
+    display: flexbox;
     justify-content: center;
     align-items: center;
 
