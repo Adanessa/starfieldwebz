@@ -25,6 +25,8 @@ def heller(request):
     heller = get_object_or_404(Character, id=5)
     skills = heller.skills.all()
     return render(request, 'heller.html', {'character': heller, 'skills': skills})
+
+
 # def character_info(request):
 #     character_details = Character.objects.all()
 #     character_skills = Skill.objects.all()
