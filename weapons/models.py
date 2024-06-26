@@ -347,6 +347,7 @@ class Weapons(models.Model):
     accuracy = models.TextField(blank=True, null=True)
     mass = models.TextField(blank=True, null=True)
     mod_capacity = models.TextField(blank=True, null=True)
+    image_filename = models.CharField(max_length=100)
 
     class Meta:
         managed = False

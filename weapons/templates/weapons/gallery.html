@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Weapon Gallery{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'weapons/css/gallery.css' %}">
+<div class="gallery-container">
+    {% for weapon in weapons %}
+        <div class="gallery-item">
+            <a href="{% url 'weapons:weapon_detail' weapon_id=weapon.id %}">
+                <img src="{% static 'weapons/images/'|add:weapon.image_filename %}" alt="{{ weapons.name }}">
+                <div class="gallery-item-info">
+                    <h3>{{ weapons.name }}</h3>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

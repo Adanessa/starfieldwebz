@@ -1,0 +1,25 @@
+<!-- templates/weapons/weapon_detail.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ weapons.name }}{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'weapons/css/weapon_detail.css' %}">
+<div class="weapon-detail-container">
+    <div class="weapon-image">
+        <img src="{% static 'weapons/images/'|add:weapons.image_filename %}" alt="{{ weapons.name }}">
+    </div>
+    <div class="weapon-info">
+        <h2>{{ weapons.name }}</h2>
+        <p>Rarity: {{ weapons.rarity }}</p>
+        <p>Type: {{ weapons.type }}</p>
+        <p>Damage: {{ weapons.dmg }}</p>
+        <p>Ammo: {{ weapons.ammo }}</p>
+        <p>Magazine: {{ weapons.mag }}</p>
+        <p>Fire Rate: {{ weapons.fire_rate }}</p>
+        <p>Range: {{ weapons.range }}</p>
+        <p>Accuracy: {{ weapons.accuracy }}</p>
+        <p>Mass: {{ weapons.mass }}</p>
+        <p>Mod Capacity: {{ weapons.mod_capacity }}</p>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,17 @@
+/* static/weapons/css/weapon_detail.css */
+.weapon-detail-container {
+    display: flex;
+    gap: 16px;
+    margin: 16px;
+}
+
+.weapon-image img {
+    max-width: 300px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.weapon-info {
+    max-width: 600px;
+}
