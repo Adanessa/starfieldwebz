@@ -1,12 +1,13 @@
-/* static/weapons/css/weapon_detail.css */
 .weapon-detail-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     gap: 16px;
     margin: 16px;
+    padding: 100px;
 }
 
 .weapon-image img {
-    max-width: 300px;
+    max-width: 100%;
     height: auto;
     border: 1px solid #ccc;
     border-radius: 8px;
