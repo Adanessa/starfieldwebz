@@ -16,7 +16,7 @@ def amundsen_barret(request):
     skills = amundsen_barret.skills.all()
     return render(request, 'amundsen_barret.html', {'character': amundsen_barret, 'skills': skills})
 
-def same_coe(request):
+def sam_coe(request):
     same_coe = get_object_or_404(Character, id=3)
     skills = same_coe.skills.all()
     return render(request, 'sam_coe.html', {'character': same_coe, 'skills': skills})
