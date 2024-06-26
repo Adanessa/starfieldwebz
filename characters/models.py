@@ -6,6 +6,7 @@ class Character(models.Model):
     gender = models.CharField(max_length=25)
     description = models.TextField(blank=True, null=True)
     faction = models.CharField(blank=True, null=True)
+    image_filename = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
