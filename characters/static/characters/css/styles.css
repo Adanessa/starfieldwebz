@@ -1,4 +1,4 @@
-.item1 { grid-area: sarah; }
+.item1 { grid-area: title; }
 .item2 {
   grid-area: image;
   border-radius: 50%;
@@ -21,7 +21,7 @@ width: 200px;
 .grid-container {
   display: grid;
   grid-template-areas:
-    'image sarah sarah right right right'
+    'image title title right right right'
     'image faction faction right right right'
     'details main main right right right'
     'skills main main right right right'
