@@ -18,12 +18,11 @@ width: 200px;
 .item5 { grid-area: footer; }
 .item6 { grid-area: details; }
 .item7 { grid-area: faction; }
-.item8 { grid-area: gender; }
-.item9 { grid-area: skills;}
+.item9 { grid-area: skills; }
 .grid-container {
   display: grid;
   grid-template-areas:
-    'image title title title right right'
+    'image . title . . .'
     'image faction faction faction right right'
     'skills main main main right right'
     'skills main main main right right'

@@ -7,9 +7,9 @@
     {% for weapon in weapons %}
         <div class="gallery-item">
             <a href="{% url 'weapons:weapon_detail' weapon_id=weapon.id %}">
-                <img src="{% static 'weapons/images/'|add:weapon.image_filename %}" alt="{{ weapons.name }}">
+                <img src="{% static 'weapons/images/'|add:weapon.image_filename %}" alt="{{ weapon.name }}">
                 <div class="gallery-item-info">
-                    <h3>{{ weapons.name }}</h3>
+                    <h3>{{ weapon.name }}</h3>
                 </div>
             </a>
         </div>
