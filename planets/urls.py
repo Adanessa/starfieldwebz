@@ -5,6 +5,6 @@ app_name = 'planets'
 
 urlpatterns = [
     path('search/', views.search_planets, name='search_planets'),
+    path('results/', views.search_results, name='search_results'),
     path('planet_table/', views.planet_table, name='planet_table'),
-
 ]

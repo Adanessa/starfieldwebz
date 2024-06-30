@@ -1,9 +1,22 @@
-<h1>Best Planets</h1>
-<ul>
-  {% for info in planets_info %}
-    <li>
-      {{ info.planet.name }} (System: {{ info.planet.system.name }}) - Matching Resources: {{ info.matching_resources|join:", " }}<br>
-      All Resources: {{ info.all_resources|join:", " }}
-    </li>
-  {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    {% if planets_info %}
+        <h2>Best Planets</h2>
+        <ul>
+          {% for info in planets_info %}
+            <li>
+              {{ info.planet.name }} (System: {{ info.planet.system.name }}) - Matching Resources: {{ info.matching_resources|join:", " }}<br>
+              All Resources: {{ info.all_resources|join:", " }}
+            </li>
+          {% endfor %}
+        </ul>
+    {% else %}
+        <p>No planets found matching the criteria.</p>
+    {% endif %}
+</body>
+</html>
