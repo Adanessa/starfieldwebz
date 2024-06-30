@@ -46,6 +46,11 @@ def planet_table(request):
     return render(request, 'planets/planet_table.html', {'planets': planets})
 
 
+from django.shortcuts import render
+from .models import Systems, Planets
+from .forms import PlanetSearchForm
+from collections import defaultdict
+
 def search_planets(request):
     if request.method == "POST":
         form = PlanetSearchForm(request.POST)
