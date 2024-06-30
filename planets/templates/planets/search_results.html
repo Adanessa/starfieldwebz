@@ -1,0 +1,9 @@
+<h1>Best Planets</h1>
+<ul>
+  {% for info in planets_info %}
+    <li>
+      {{ info.planet.name }} (System: {{ info.planet.system.name }}) - Matching Resources: {{ info.matching_resources|join:", " }}<br>
+      All Resources: {{ info.all_resources|join:", " }}
+    </li>
+  {% endfor %}
+</ul>

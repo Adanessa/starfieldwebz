@@ -23,6 +23,9 @@ class Planets(models.Model):
         managed = False
         db_table = 'planets'
         
+    def __str__(self):
+        return self.name
+        
         
 class Systems(models.Model):
     name = models.CharField(unique=True, max_length=255, blank=True, null=True)
@@ -30,3 +33,6 @@ class Systems(models.Model):
     class Meta:
         managed = False
         db_table = 'systems'
+        
+    def __str__(self):
+        return self.name
