@@ -1,5 +1,3 @@
-# views.py
-
 from django.shortcuts import render
 from .forms import PlanetSearchForm
 from .models import Planets, Systems, ManufacturedItem
@@ -51,14 +49,12 @@ def search_results(request):
         habitability_rank = form.cleaned_data['habitability_rank']
         multiple_systems = form.cleaned_data['multiple_systems']
         excluded_systems = form.cleaned_data['excluded_systems']
-        show_all_resources = form.cleaned_data.get('show_all_resources', False)  # Handle missing field
+        show_all_resources = form.cleaned_data.get('show_all_resources', False)
         manufactured_items = form.cleaned_data['manufactured_items']
 
-        # Gather materials from manufactured items
         item_names = [item.item_name for item in manufactured_items]
         materials_from_items = gather_materials(item_names)
         
-        # Combine these materials with the user's selected resources
         combined_resources = set(resources) | set(materials_from_items.keys())
 
         planets = Planets.objects.all()
@@ -79,7 +75,6 @@ def search_results(request):
         if not multiple_systems and main_planet:
             planets = planets.filter(system=main_planet.system)
 
-        # Create a mapping from resource to planets
         resource_to_planets = defaultdict(list)
         for planet in planets:
             planet_resources = planet.resources.split(', ')
@@ -87,7 +82,6 @@ def search_results(request):
                 if resource in combined_resources:
                     resource_to_planets[resource].append(planet)
         
-        # Use a greedy algorithm to cover all resources with the minimum number of planets
         selected_planets = set()
         covered_resources = set()
         while covered_resources != combined_resources:
@@ -102,11 +96,10 @@ def search_results(request):
                     best_planet = planet
                     best_covered = newly_covered
             if not best_planet:
-                break  # In case we can't cover all resources
+                break
             selected_planets.add(best_planet)
             covered_resources.update(best_covered)
 
-        # Prepare the context with detailed resource info
         detailed_planet_info = []
         for planet in selected_planets:
             planet_resources = set(planet.resources.split(', '))

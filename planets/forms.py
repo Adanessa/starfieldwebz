@@ -7,8 +7,6 @@ class ResourceForm(forms.Form):
     include_biomes = forms.BooleanField(required=False, label="Include Biomes")
     include_type = forms.BooleanField(required=False, label="Include Type")
     
-# forms.py
-
 class PlanetSearchForm(forms.Form):
     main_planet = forms.ModelChoiceField(queryset=Planets.objects.all(), required=False)
     
@@ -29,6 +27,6 @@ class PlanetSearchForm(forms.Form):
         queryset=ManufacturedItem.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False,
-        label="Manufactured Items"  # Ensure this is properly labeled
+        label="Manufactured Items"
     )
     show_all_resources = forms.BooleanField(required=False, initial=False)
