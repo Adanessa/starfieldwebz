@@ -4,22 +4,17 @@ from .models import Planets, Systems, ManufacturedItem, CraftingMaterial
 from collections import defaultdict
 
 def gather_materials(item_names):
-    materials_needed = {}
-    print(f"Gathering materials for items: {item_names}")
+    materials_needed = set()
 
     for item_name in item_names:
         try:
             manufactured_item = ManufacturedItem.objects.get(item_name__iexact=item_name)
-            print(f"Found manufactured item: {manufactured_item}")
             for material in manufactured_item.crafting_materials.all():
-                resource_name = material.resource_name
-                print(f"Found crafting material: {resource_name}")
-                materials_needed[resource_name] = True
+                resource_name = map_chemical_symbols(material.resource_name)
+                materials_needed.add(resource_name)
         except ManufacturedItem.DoesNotExist:
-            print(f"Manufactured item not found: {item_name}")
             continue
 
-    print(f"Materials needed: {materials_needed}")
     return materials_needed
 
 
