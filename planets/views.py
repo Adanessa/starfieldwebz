@@ -1,21 +1,23 @@
 from django.shortcuts import render
+from .utils import map_chemical_symbols
 from .forms import PlanetSearchForm
 from .models import Planets, Systems, ManufacturedItem, CraftingMaterial
 from collections import defaultdict
 
 def gather_materials(item_names):
-    materials_needed = set()
+    materials_needed = {}
 
     for item_name in item_names:
         try:
             manufactured_item = ManufacturedItem.objects.get(item_name__iexact=item_name)
             for material in manufactured_item.crafting_materials.all():
                 resource_name = map_chemical_symbols(material.resource_name)
-                materials_needed.add(resource_name)
+                materials_needed[resource_name] = True  # Use a dummy value
         except ManufacturedItem.DoesNotExist:
             continue
 
     return materials_needed
+
 
 
 def search_results(request):

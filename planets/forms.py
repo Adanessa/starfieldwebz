@@ -11,15 +11,6 @@ class ResourceForm(forms.Form):
     
 class PlanetSearchForm(forms.Form):
     main_planet = forms.ModelChoiceField(queryset=Planets.objects.all(), required=False)
-    
-    unique_resources = get_unique_resources()
-    resource_choices = map_chemical_symbols(unique_resources)
-    
-    resources = forms.MultipleChoiceField(
-        choices=resource_choices,
-        widget=forms.CheckboxSelectMultiple,
-        required=False
-    )
     include_domesticables = forms.BooleanField(required=False, initial=False)
     include_gatherable = forms.BooleanField(required=False, initial=False)
     habitability_rank = forms.IntegerField(min_value=0, max_value=4, required=False)
@@ -32,4 +23,17 @@ class PlanetSearchForm(forms.Form):
         label="Manufactured Items"
     )
     show_all_resources = forms.BooleanField(required=False, initial=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+        # Dynamically retrieve and map resource choices
+        unique_resources = get_unique_resources()
+        mapped_resources = [map_chemical_symbols(resource) for resource in unique_resources]
+        
+        self.fields['resources'] = forms.MultipleChoiceField(
+            choices=[(res, res) for res in mapped_resources],
+            widget=forms.CheckboxSelectMultiple,
+            required=False
+        )
 

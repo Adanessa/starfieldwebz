@@ -1,23 +1,12 @@
 from .models import Planets
-
-def get_unique_resources():
-    all_resources = Planets.objects.values_list('resources', flat=True)
-    resource_set = set()
-    for resource_list in all_resources:
-        if resource_list:
-            resources = resource_list.split(',')
-            for resource in resources:
-                resource_set.add(resource.strip())
-    return sorted(resource_set)
-
 RESOURCE_MAPPING = {
-    'Fe': 'Iron',
-    'Iron': 'Iron',
-    'Iron(Fe)': 'Iron',
-    'He-3': 'Helium-3',
-    'Al': 'Aluminium',
-    'Aluminium': 'Aluminium',
-    'Aluminium(Al)': 'Aluminium',
+    'Fe': 'Fe',  # Assuming you want "Fe" to remain as "Fe"
+    'Iron': 'Fe',  # Map "Iron" to "Fe"
+    'Iron(Fe)': 'Fe',  # Map "Iron(Fe)" to "Fe"
+    'He-3': 'He-3',  # Assuming you want "He-3" to remain as "He-3"
+    'Al': 'Al',  # Map "Al" to "Al"
+    'Aluminium': 'Al',  # Map "Aluminium" to "Al"
+    'Aluminium(Al)': 'Al',  # Map "Aluminium(Al)" to "Al"
     'Be': 'Beryllium',
     'Beryllium': 'Beryllium',
     'Eu': 'Europium',
@@ -113,3 +102,14 @@ RESOURCE_MAPPING = {
 
 def map_chemical_symbols(resource):
     return RESOURCE_MAPPING.get(resource, resource)
+
+def get_unique_resources():
+    all_resources = Planets.objects.values_list('resources', flat=True)
+    resource_set = set()
+    for resource_list in all_resources:
+        if resource_list:
+            resources = resource_list.split(',')
+            for resource in resources:
+                resource_set.add(resource.strip())
+    return sorted(resource_set)
+
