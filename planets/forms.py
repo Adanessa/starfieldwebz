@@ -1,5 +1,5 @@
 from django import forms
-from .models import Systems, Planets
+from .models import Systems, Planets, ManufacturedItem
 from .utils import get_unique_resources, map_chemical_symbols
 
 class ResourceForm(forms.Form):
@@ -7,7 +7,7 @@ class ResourceForm(forms.Form):
     include_biomes = forms.BooleanField(required=False, label="Include Biomes")
     include_type = forms.BooleanField(required=False, label="Include Type")
     
-
+# forms.py
 
 class PlanetSearchForm(forms.Form):
     main_planet = forms.ModelChoiceField(queryset=Planets.objects.all(), required=False)
@@ -25,3 +25,10 @@ class PlanetSearchForm(forms.Form):
     habitability_rank = forms.IntegerField(min_value=0, max_value=4)
     multiple_systems = forms.BooleanField(required=False, initial=False)
     excluded_systems = forms.ModelMultipleChoiceField(queryset=Systems.objects.all(), required=False)
+    manufactured_items = forms.ModelMultipleChoiceField(
+        queryset=ManufacturedItem.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+        label="Manufactured Items"  # Ensure this is properly labeled
+    )
+    show_all_resources = forms.BooleanField(required=False, initial=False)

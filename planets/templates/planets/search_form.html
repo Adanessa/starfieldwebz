@@ -1,14 +1,51 @@
+<!-- search_form.html -->
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Planet Search</title>
 </head>
 <body>
-    <h1>Search for Planets</h1>
-    <form id="planetSearchForm" method="post" target="_blank" action="{% url 'planets:search_results' %}">
+    <h1>Search Planets</h1>
+    <form method="post" action="{% url 'planets:search_results' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Search</button>
+        <div>
+            <label for="{{ form.main_planet.id_for_label }}">Main Planet:</label>
+            {{ form.main_planet }}
+        </div>
+        <div>
+            <label>Resources (comma-separated):</label>
+            {{ form.resources }}
+        </div>
+        <div>
+            <label for="{{ form.include_domesticables.id_for_label }}">Include Domesticables:</label>
+            {{ form.include_domesticables }}
+        </div>
+        <div>
+            <label for="{{ form.include_gatherable.id_for_label }}">Include Gatherable:</label>
+            {{ form.include_gatherable }}
+        </div>
+        <div>
+            <label for="{{ form.habitability_rank.id_for_label }}">Habitability Rank:</label>
+            {{ form.habitability_rank }}
+        </div>
+        <div>
+            <label for="{{ form.multiple_systems.id_for_label }}">Multiple Systems:</label>
+            {{ form.multiple_systems }}
+        </div>
+        <div>
+            <label for="{{ form.excluded_systems.id_for_label }}">Excluded Systems:</label>
+            {{ form.excluded_systems }}
+        </div>
+        <div>
+            <label for="{{ form.manufactured_items.id_for_label }}">Manufactured Items:</label>
+            {{ form.manufactured_items }}
+        </div>
+        <div>
+            <label for="{{ form.show_all_resources.id_for_label }}">Show All Resources:</label>
+            {{ form.show_all_resources }}
+        </div>
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>

@@ -5,13 +5,21 @@
 </head>
 <body>
     <h1>Search Results</h1>
+    <form method="post" action="{% url 'planets:search_results' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Apply Filter</button>
+    </form>
+
     {% if planets_info %}
         <h2>Best Planets</h2>
         <ul>
           {% for info in planets_info %}
             <li>
               {{ info.planet.name }} (System: {{ info.planet.system.name }}) - Matching Resources: {{ info.matching_resources|join:", " }}<br>
-              All Resources: {{ info.all_resources|join:", " }}
+              {% if form.cleaned_data.show_all_resources %}
+                  All Resources: {{ info.all_resources|join:", " }}
+              {% endif %}
             </li>
           {% endfor %}
         </ul>
