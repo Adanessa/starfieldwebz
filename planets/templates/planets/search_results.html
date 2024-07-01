@@ -16,8 +16,10 @@
         <ul>
           {% for info in planets_info %}
             <li>
-              {{ info.planet.name }} (System: {{ info.planet.system.name }}) - Matching Resources: {{ info.matching_resources|join:", " }}<br>
-              {% if form.cleaned_data.show_all_resources %}
+              {{ info.planet.name }} (System: {{ info.planet.system.name }}) - 
+              Habitability Rank: {{ info.hab_rank }} - 
+              Matching Resources: {{ info.matching_resources|join:", " }}<br>
+              {% if show_all_resources %}
                   All Resources: {{ info.all_resources|join:", " }}
               {% endif %}
             </li>

@@ -39,8 +39,6 @@ class Systems(models.Model):
     
 class ManufacturedItem(models.Model):
     item_name = models.CharField(max_length=100)
-    work_bench = models.CharField(max_length=100)
-    special_projects_rank = models.CharField(max_length=10, blank=True)
 
     class Meta:
         managed = False
@@ -52,11 +50,11 @@ class ManufacturedItem(models.Model):
 class CraftingMaterial(models.Model):
     manufactured_item = models.ForeignKey(ManufacturedItem, related_name='crafting_materials', on_delete=models.CASCADE)
     resource_name = models.CharField(max_length=100)
-    quantity = models.IntegerField()
 
     class Meta:
         managed = False
         db_table = 'items_craftingmaterial'
 
     def __str__(self):
-        return f"{self.resource_name} ({self.quantity})"
+        return self.resource_name
+

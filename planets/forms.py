@@ -1,26 +1,7 @@
 from django import forms
-from django.utils.html import conditional_escape
-from django.utils.safestring import mark_safe
 from .models import Systems, Planets, ManufacturedItem
 from .utils import get_unique_resources, map_chemical_symbols
 
-class TagWidget(forms.TextInput):
-    def render(self, name, value, attrs=None, renderer=None):
-        if value is None:
-            value = []
-        output = []
-        for val in value:
-            output.append('<span style="border: 1px solid #ccc; padding: 2px 6px; margin-right: 5px;">{0} <a href="#" style="color: red; text-decoration: none;">x</a></span>'.format(conditional_escape(val)))
-        output.append(super().render(name, None, attrs))  # Call the parent class's render method correctly
-        return mark_safe(''.join(output))
-
-    def value_from_datadict(self, data, files, name):
-        return data.getlist(name)
-
-    def format_value(self, value):
-        if isinstance(value, (list, tuple)):
-            return ', '.join(str(v) for v in value)
-        return value
 
 class ResourceForm(forms.Form):
     resources = forms.CharField(label='Resources (comma-separated)', max_length=255)
@@ -42,8 +23,8 @@ class PlanetSearchForm(forms.Form):
     include_domesticables = forms.BooleanField(required=False, initial=False)
     include_gatherable = forms.BooleanField(required=False, initial=False)
     habitability_rank = forms.IntegerField(min_value=0, max_value=4, required=False)
-    multiple_systems = forms.BooleanField(required=False, initial=False)
-    excluded_systems = forms.CharField(label='Excluded Systems', required=False, widget=TagWidget(attrs={'placeholder': 'Enter excluded systems'}))
+    multiple_systems = forms.BooleanField(required=False, initial=True)
+    excluded_systems = forms.ModelMultipleChoiceField(queryset=Systems.objects.all(), required=False)
     manufactured_items = forms.ModelMultipleChoiceField(
         queryset=ManufacturedItem.objects.all(),
         widget=forms.CheckboxSelectMultiple,
