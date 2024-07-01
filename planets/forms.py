@@ -24,4 +24,4 @@ class PlanetSearchForm(forms.Form):
     include_gatherable = forms.BooleanField(required=False, initial=False)
     habitability_rank = forms.IntegerField(min_value=0, max_value=4)
     multiple_systems = forms.BooleanField(required=False, initial=False)
-    excluded_systems = forms.ModelMultipleChoiceField(queryset=Systems.objects.all(), required=False, widget=forms.CheckboxSelectMultiple)
+    excluded_systems = forms.ModelMultipleChoiceField(queryset=Systems.objects.all(), required=False)
