@@ -202,4 +202,3 @@ def get_unique_resources():
         'inorganic_resources': sorted(set(inorganic_resources)),
         'organic_resources': sorted(set(organic_resources))
     }
-
