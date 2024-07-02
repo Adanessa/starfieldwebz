@@ -1,14 +1,7 @@
 from django import forms
-from .models import Systems, Planets, ManufacturedItem
-from .utils import get_unique_resources, map_chemical_symbols
+from .models import Planets, Systems, ManufacturedItem
+from .utils import get_unique_resources, map_chemical_symbols, map_display_names
 
-
-class ResourceForm(forms.Form):
-    resources = forms.CharField(label='Resources (comma-separated)', max_length=255)
-    include_biomes = forms.BooleanField(required=False, label="Include Biomes")
-    include_type = forms.BooleanField(required=False, label="Include Type")
-    
-    
 class PlanetSearchForm(forms.Form):
     main_planet = forms.ModelChoiceField(queryset=Planets.objects.all(), required=False)
     include_domesticables = forms.BooleanField(required=False, initial=False)
@@ -29,11 +22,12 @@ class PlanetSearchForm(forms.Form):
         
         # Dynamically retrieve and map resource choices
         unique_resources = get_unique_resources()
-        mapped_resources = [map_chemical_symbols(resource) for resource in unique_resources]
+        mapped_resources = [(map_chemical_symbols(resource), map_display_names(map_chemical_symbols(resource))) for resource in unique_resources]
         
         self.fields['resources'] = forms.MultipleChoiceField(
-            choices=[(res, res) for res in mapped_resources],
+            choices=mapped_resources,
             widget=forms.CheckboxSelectMultiple,
             required=False
         )
+
 

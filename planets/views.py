@@ -1,7 +1,8 @@
+# views.py
 from django.shortcuts import render
-from .utils import map_chemical_symbols
+from .utils import map_chemical_symbols, map_display_names, RESOURCE_DISPLAY_MAPPING
 from .forms import PlanetSearchForm
-from .models import Planets, Systems, ManufacturedItem, CraftingMaterial
+from .models import Planets, Systems, ManufacturedItem
 from collections import defaultdict
 
 def gather_materials(item_names):
@@ -17,8 +18,6 @@ def gather_materials(item_names):
             continue
 
     return materials_needed
-
-
 
 def search_results(request):
     form = PlanetSearchForm(request.POST or None)
@@ -39,13 +38,12 @@ def search_results(request):
         item_names = [item.item_name for item in manufactured_items]
         materials_from_items = gather_materials(item_names)
         combined_resources = set(resources) | set(materials_from_items.keys())
-        
+
         print(f"Combined resources: {combined_resources}")
 
         planets = Planets.objects.all()
         print(f"Initial planets count: {planets.count()}")
 
-        # Apply filters based on form inputs
         if main_planet:
             planets = planets.filter(system=main_planet.system)
             print(f"Planets after main_planet filter: {planets.count()}")
@@ -65,7 +63,6 @@ def search_results(request):
             ]
             print(f"Planets after habitability_rank filter: {len(planets)}")
 
-        # Exclude systems based on names
         if excluded_systems:
             planets = planets.exclude(system__in=excluded_systems)
             print(f"Planets after excluded_systems filter: {planets.count()}")
@@ -74,8 +71,9 @@ def search_results(request):
         for planet in planets:
             planet_resources = planet.resources.split(', ')
             for resource in planet_resources:
-                if resource in combined_resources:
-                    resource_to_planets[resource].append(planet)
+                mapped_resource = map_chemical_symbols(resource)
+                if mapped_resource in combined_resources:
+                    resource_to_planets[mapped_resource].append(planet)
         print(f"Resource to planets mapping: {dict(resource_to_planets)}")
 
         selected_planets = set()
@@ -88,7 +86,7 @@ def search_results(request):
                 for planet in planets:
                     if planet in selected_planets:
                         continue
-                    planet_resources = set(planet.resources.split(', '))
+                    planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
                     newly_covered = planet_resources & combined_resources - covered_resources
                     if len(newly_covered) > len(best_covered):
                         best_planet = planet
@@ -104,7 +102,7 @@ def search_results(request):
                 system_resources = set()
                 system_planet_set = set()
                 for planet in system_planets:
-                    planet_resources = set(planet.resources.split(', '))
+                    planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
                     system_resources.update(planet_resources)
                     system_planet_set.add(planet)
                     if combined_resources.issubset(system_resources):
@@ -116,13 +114,13 @@ def search_results(request):
 
         detailed_planet_info = []
         for planet in selected_planets:
-            planet_resources = set(planet.resources.split(', '))
+            planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
             matching_resources = planet_resources & combined_resources
             all_resources = planet_resources if show_all_resources else matching_resources
             detailed_planet_info.append({
                 'planet': planet,
-                'matching_resources': matching_resources,
-                'all_resources': all_resources,
+                'matching_resources': {map_display_names(res) for res in matching_resources},
+                'all_resources': {map_display_names(res) for res in all_resources},
                 'hab_rank': planet.hab_rank
             })
 

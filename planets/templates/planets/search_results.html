@@ -14,16 +14,16 @@
     {% if planets_info %}
         <h2>Best Planets</h2>
         <ul>
-          {% for info in planets_info %}
-            <li>
-              {{ info.planet.name }} (System: {{ info.planet.system.name }}) - 
-              Habitability Rank: {{ info.hab_rank }} - 
-              Matching Resources: {{ info.matching_resources|join:", " }}<br>
-              {% if show_all_resources %}
-                  All Resources: {{ info.all_resources|join:", " }}
-              {% endif %}
-            </li>
-          {% endfor %}
+            {% for info in planets_info %}
+                <li>
+                    {{ info.planet.name }} (System: {{ info.planet.system.name }}) - 
+                    Habitability Rank: {{ info.hab_rank }} - 
+                    Matching Resources: {{ info.matching_resources|join:", " }}<br>
+                    {% if show_all_resources %}
+                        All Resources: {{ info.all_resources|join:", " }}
+                    {% endif %}
+                </li>
+            {% endfor %}
         </ul>
     {% else %}
         <p>No planets found matching the criteria.</p>
