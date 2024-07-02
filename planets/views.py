@@ -5,6 +5,7 @@ from .forms import PlanetSearchForm
 from .models import Planets, Systems, ManufacturedItem
 from collections import defaultdict
 
+# Function to gather materials needed for manufactured items
 def gather_materials(item_names):
     materials_needed = {}
 
@@ -18,7 +19,7 @@ def gather_materials(item_names):
             continue
 
     return materials_needed
-
+# View function to handle search results based on form inputs
 def search_results(request):
     form = PlanetSearchForm(request.POST or None)
     planets_info = None
@@ -43,11 +44,11 @@ def search_results(request):
 
         planets = Planets.objects.all()
         print(f"Initial planets count: {planets.count()}")
-
+        # Filter planets based on main planet selection
         if main_planet:
             planets = planets.filter(system=main_planet.system)
             print(f"Planets after main_planet filter: {planets.count()}")
-
+        # Include domesticables into the search if you want to see if chosen organic materials can be farmed via outpost.
         if include_domesticables:
             planets = planets.filter(domesticable__isnull=False)
             print(f"Planets after include_domesticables filter: {planets.count()}")
@@ -55,7 +56,7 @@ def search_results(request):
         if include_gatherable:
             planets = planets.filter(gatherable__isnull=False)
             print(f"Planets after include_gatherable filter: {planets.count()}")
-
+        # Include to set users current habitability level to make sure no planets that have higher hab rank req are chosen
         if habitability_rank is not None:
             planets = [
                 planet for planet in planets
@@ -67,6 +68,7 @@ def search_results(request):
             planets = planets.exclude(system__in=excluded_systems)
             print(f"Planets after excluded_systems filter: {planets.count()}")
 
+        # Dictionary to map resources to planets that have them
         resource_to_planets = defaultdict(list)
         for planet in planets:
             planet_resources = planet.resources.split(', ')
@@ -79,6 +81,7 @@ def search_results(request):
         selected_planets = set()
         covered_resources = set()
 
+        # Select planets that cover all combined resources
         if multiple_systems:
             while covered_resources != combined_resources:
                 best_planet = None
@@ -97,6 +100,7 @@ def search_results(request):
                 covered_resources.update(best_covered)
                 print(f"Selected planets: {selected_planets}, Covered resources: {covered_resources}")
         else:
+            # Select planets from each system until all resources are covered
             for system in Systems.objects.all():
                 system_planets = planets.filter(system=system)
                 system_resources = set()
@@ -113,6 +117,7 @@ def search_results(request):
                     break
 
         detailed_planet_info = []
+        # Prepare detailed planet information for rendering
         for planet in selected_planets:
             planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
             matching_resources = planet_resources & combined_resources

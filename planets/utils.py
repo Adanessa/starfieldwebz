@@ -1,4 +1,6 @@
 from .models import Planets
+
+# Mapping of resource abbreviations to standardized names
 RESOURCE_MAPPING = {
     'Fe': 'Fe',
     'Iron': 'Fe',
@@ -106,6 +108,7 @@ RESOURCE_MAPPING = {
     'tantalum': 'Tantalum'
 }
 
+# Mapping to display full name of resources
 RESOURCE_DISPLAY_MAPPING = {
     'Ad': 'Aldumite(Ad)',
     'Ag': 'Silver(Ag)',
@@ -162,13 +165,41 @@ def map_chemical_symbols(resource):
 def map_display_names(resource):
     return RESOURCE_DISPLAY_MAPPING.get(resource, resource)
 
+# Function to retrive unoque resources from database and categorize them as inorganic or organic.
 def get_unique_resources():
     all_resources = Planets.objects.values_list('resources', flat=True)
-    resource_set = set()
+    inorganic_resources = []
+    organic_resources = []
+
+    # Identifiers for categorizing resources
+    inorganic_identifiers = {
+        'Ad','Ag', 'Al', 'Aq', 'Ar', 'Au', 'Be', 'Cl', 'Co', 'Cs', 'Ct',
+        'C6Hn', 'Cu', 'Dy', 'Eu', 'F', 'Fe', 'He-3', 'Hg', 'HnCn', 'H2O', 'Ie',
+        'IL', 'Ir', 'Li', 'Nd', 'Ne', 'Ni', 'Pb', 'Pd', 'Pt', 'Pu', 'R-COOH',
+        'Rc', 'Sb', 'SiH3Cl', 'Ta', 'Ti', 'Tsn', 'U', 'V', 'Vr', 'Vy', 'W', 'Xe',
+        'xF4', 'Yb'
+        }
+    organic_identifiers = {
+        'Adhesive', 'Aromatic', 'Cosmetic', 'Fiber'
+    }
+
     for resource_list in all_resources:
         if resource_list:
             resources = resource_list.split(',')
             for resource in resources:
-                resource_set.add(resource.strip())
-    return sorted(resource_set)
+                cleaned_resource = resource.strip()
+
+                # Check if the resource name matches any inorganic identifier
+                if any(identifier in cleaned_resource for identifier in inorganic_identifiers):
+                    inorganic_resources.append(cleaned_resource)
+                # Check if the resource name matches any organic identifier
+                elif any(identifier in cleaned_resource for identifier in organic_identifiers):
+                    organic_resources.append(cleaned_resource)
+                # Default to organic if not matched as organic
+                else:
+                    organic_resources.append(cleaned_resource)
+    return {
+        'inorganic_resources': sorted(set(inorganic_resources)),
+        'organic_resources': sorted(set(organic_resources))
+    }
 

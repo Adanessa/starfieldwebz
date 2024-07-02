@@ -21,13 +21,19 @@ class PlanetSearchForm(forms.Form):
         super().__init__(*args, **kwargs)
         
         # Dynamically retrieve and map resource choices
-        unique_resources = get_unique_resources()
-        mapped_resources = [(map_chemical_symbols(resource), map_display_names(map_chemical_symbols(resource))) for resource in unique_resources]
-        
-        self.fields['resources'] = forms.MultipleChoiceField(
-            choices=mapped_resources,
+        resource_choices = get_unique_resources()
+
+        # Seperate inorganic from organic.
+        self.fields['inorganic_resources'] = forms.MultipleChoiceField(
+            choices=[(r, map_display_names(r)) for r in resource_choices['inorganic_resources']],
             widget=forms.CheckboxSelectMultiple,
-            required=False
+            required=False,
+            label="Inorganic Resources"
         )
-
-
+        # Seperate organics from inorganic.
+        self.fields['organic_resources'] = forms.MultipleChoiceField(
+            choices=[(r, map_display_names(r)) for r in resource_choices['organic_resources']],
+            widget=forms.CheckboxSelectMultiple,
+            required=False,
+            label="Organic Resources"
+        )
