@@ -4,10 +4,8 @@ from .forms import PlanetSearchForm
 from .models import Planets, Systems, ManufacturedItem
 from collections import defaultdict
 
-# Function to gather materials needed for manufactured items
 def gather_materials(item_names):
     materials_needed = {}
-
     for item_name in item_names:
         try:
             manufactured_item = ManufacturedItem.objects.get(item_name__iexact=item_name)
@@ -16,10 +14,71 @@ def gather_materials(item_names):
                 materials_needed[resource_name] = True  # Use a dummy value
         except ManufacturedItem.DoesNotExist:
             continue
-
     return materials_needed
 
-# View function to handle search results based on form inputs
+def filter_planets_by_habitability(planets, habitability_rank):
+    if habitability_rank is not None:
+        return [planet for planet in planets if planet.hab_rank and planet.hab_rank.isdigit() and int(planet.hab_rank) <= habitability_rank]
+    return planets
+
+def map_resources_to_planets(planets, combined_resources):
+    resource_to_planets = defaultdict(list)
+    for planet in planets:
+        planet_resources = planet.resources.split(', ')
+        for resource in planet_resources:
+            mapped_resource = map_chemical_symbols(resource)
+            if mapped_resource in combined_resources:
+                resource_to_planets[mapped_resource].append(planet)
+    return resource_to_planets
+
+def select_best_planets(planets, combined_resources):
+    selected_planets = set()
+    covered_resources = set()
+    while covered_resources != combined_resources:
+        best_planet = None
+        best_covered = set()
+        for planet in planets:
+            if planet in selected_planets:
+                continue
+            planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
+            newly_covered = planet_resources & combined_resources - covered_resources
+            if len(newly_covered) > len(best_covered):
+                best_planet = planet
+                best_covered = newly_covered
+        if not best_planet:
+            break
+        selected_planets.add(best_planet)
+        covered_resources.update(best_covered)
+        print(f"Selected planets: {selected_planets}, Covered resources: {covered_resources}")
+    return selected_planets, covered_resources
+
+def select_system_planets(planets, combined_resources):
+    for system in Systems.objects.all():
+        system_planets = planets.filter(system=system)
+        system_resources = set()
+        system_planet_set = set()
+        for planet in system_planets:
+            planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
+            system_resources.update(planet_resources)
+            system_planet_set.add(planet)
+            if combined_resources.issubset(system_resources):
+                return system_planet_set, combined_resources
+    return set(), set()
+
+def prepare_planet_info(selected_planets, combined_resources, show_all_resources):
+    detailed_planet_info = []
+    for planet in selected_planets:
+        planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
+        matching_resources = planet_resources & combined_resources
+        all_resources = planet_resources if show_all_resources else matching_resources
+        detailed_planet_info.append({
+            'planet': planet,
+            'matching_resources': {map_display_names(res) for res in matching_resources},
+            'all_resources': {map_display_names(res) for res in all_resources},
+            'hab_rank': planet.hab_rank
+        })
+    return detailed_planet_info
+
 def search_results(request):
     form = PlanetSearchForm(request.POST or None)
     planets_info = None
@@ -43,73 +102,17 @@ def search_results(request):
         planets = Planets.objects.all()
         print(f"Initial planets count: {planets.count()}")
 
-        # Filter planets based on habitability rank
-        if habitability_rank is not None:
-            planets = [planet for planet in planets if planet.hab_rank and planet.hab_rank.isdigit() and int(planet.hab_rank) <= habitability_rank]
-            print(f"Planets after habitability_rank filter: {len(planets)}")
+        planets = filter_planets_by_habitability(planets, habitability_rank)
 
-        # Map resources to planets
-        resource_to_planets = defaultdict(list)
-        for planet in planets:
-            planet_resources = planet.resources.split(', ')
-            for resource in planet_resources:
-                mapped_resource = map_chemical_symbols(resource)
-                if mapped_resource in combined_resources:
-                    resource_to_planets[mapped_resource].append(planet)
+        resource_to_planets = map_resources_to_planets(planets, combined_resources)
         print(f"Resource to planets mapping: {dict(resource_to_planets)}")
 
-        selected_planets = set()
-        covered_resources = set()
-
-        # Select planets that cover all combined resources
         if multiple_systems:
-            while covered_resources != combined_resources:
-                best_planet = None
-                best_covered = set()
-                for planet in planets:
-                    if planet in selected_planets:
-                        continue
-                    planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
-                    newly_covered = planet_resources & combined_resources - covered_resources
-                    if len(newly_covered) > len(best_covered):
-                        best_planet = planet
-                        best_covered = newly_covered
-                if not best_planet:
-                    break
-                selected_planets.add(best_planet)
-                covered_resources.update(best_covered)
-                print(f"Selected planets: {selected_planets}, Covered resources: {covered_resources}")
+            selected_planets, covered_resources = select_best_planets(planets, combined_resources)
         else:
-            # Select planets from each system until all resources are covered
-            for system in Systems.objects.all():
-                system_planets = planets.filter(system=system)
-                system_resources = set()
-                system_planet_set = set()
-                for planet in system_planets:
-                    planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
-                    system_resources.update(planet_resources)
-                    system_planet_set.add(planet)
-                    if combined_resources.issubset(system_resources):
-                        selected_planets = system_planet_set
-                        covered_resources = combined_resources
-                        break
-                if covered_resources == combined_resources:
-                    break
+            selected_planets, covered_resources = select_system_planets(planets, combined_resources)
 
-        # Prepare detailed planet information for rendering
-        detailed_planet_info = []
-        for planet in selected_planets:
-            planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
-            matching_resources = planet_resources & combined_resources
-            all_resources = planet_resources if show_all_resources else matching_resources
-            detailed_planet_info.append({
-                'planet': planet,
-                'matching_resources': {map_display_names(res) for res in matching_resources},
-                'all_resources': {map_display_names(res) for res in all_resources},
-                'hab_rank': planet.hab_rank
-            })
-
-        planets_info = detailed_planet_info
+        planets_info = prepare_planet_info(selected_planets, combined_resources, show_all_resources)
 
     else:
         print("Form is not valid")

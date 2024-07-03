@@ -25,8 +25,6 @@ RESOURCE_MAPPING = {
     'Copper': 'Cu',
     'Cs': 'Cs',
     'Caesium': 'Cs',
-    'Cs': 'Cs',
-    'Caesium': 'Cs',
     'Ceasium(Cs)': 'Cs',
     'Fiber': 'Fiber',
     'Nutrient': 'Nutrient',
@@ -43,14 +41,9 @@ RESOURCE_MAPPING = {
     'Plutonium': 'Pu',
     'F': 'F',
     'Fluorine': 'F',
-    'Ag': 'Ag',
-    'Silver': 'Ag',
     'Hg': 'Hg',
     'Mercury': 'Hg',
-    'Aluminium(Al)': 'Aluminium',
-    'Iron(Fe)': 'Iron',
     'Aldumite(Ad)': 'Aldumite',
-    'Ceasium(Cs)': 'Ceasium',
     'Drilling Rig': 'Drilling Rig',
     'Microsend Regulator': 'Microsend Regulator',
     'Isocentered Magnet': 'Isocentered Magnet',
@@ -60,51 +53,35 @@ RESOURCE_MAPPING = {
     'Isotopic Coolant': 'Isotopic Coolant',
     'Reactive Gauge': 'Reactive Gauge',
     'Tungsten': 'Tungsten',
-    'Caesium': 'Ceasium',
     'Indicite': 'Indicite',
     'Semimetal Wafer': 'Semimetal Wafer',
     'cobalt': 'Cobalt',
     'nickel': 'Nickel',
     'ionic liquids': 'Ionic Liquids',
     'tetrafluorides': 'Tetrafluorides',
-    'europium': 'Europium',
-    'lithium': 'Lithium',
     'supercooled magnet': 'Supercooled Magnet',
-    'tau grade rheostat': 'Tau Grade Rheostat',
     'Mag Pressure Tank': 'Mag Pressure Tank',
     'alkanes': 'Alkanes',
-    'mag pressure tank': 'Mag Pressure Tank',
-    'reactive gauge': 'Reactive Gauge',
-    'semimetal wafer': 'Semimetal Wafer',
     'solvent': 'Solvent',
-    'uranium': 'Uranium',
     'gold': 'Gold',
     'neodymium': 'Neodymium',
     'zero wire': 'Zero Wire',
     'cosmetic': 'Cosmetic',
-    'fiber': 'Fiber',
     'antimony': 'Antimony',
     'vanadium': 'Vanadium',
     'palladium': 'Palladium',
     'paramagnon conductor': 'Paramagnon Conductor',
     'polymer': 'Polymer',
     'positron battery': 'Positron Battery',
-    'aluminium': 'Aluminium',
-    'copper': 'Copper',
     'rothicite': 'Rothicite',
     'molecular sieve': 'Molecular Sieve',
     'Sterile Nanotubes': 'Sterile Nanotubes',
-    'isocentered magnet': 'Isocentered Magnet',
-    'isotopic coolant': 'Isotopic Coolant',
     'tasine': 'Tasine',
-    'beryllium': 'Beryllium',
     'veryl': 'Veryl',
     'ytterbium': 'Ytterbium',
     'indicite wafer': 'Indicite Wafer',
     'nuclear fuel rod': 'Nuclear Fuel Rod',
-    'plutonium': 'Plutonium',
     'vytinium': 'Vytinium',
-    'silver': 'Silver',
     'tantalum': 'Tantalum'
 }
 
@@ -165,23 +142,23 @@ def map_chemical_symbols(resource):
 def map_display_names(resource):
     return RESOURCE_DISPLAY_MAPPING.get(resource, resource)
 
-# Function to retrive unoque resources from database and categorize them as inorganic or organic.
+# Identifiers for categorizing resources
+INORGANIC_IDENTIFIERS = {
+    'Ad', 'Ag', 'Al', 'Aq', 'Ar', 'Au', 'Be', 'Cl', 'Co', 'Cs', 'Ct',
+    'C6Hn', 'Cu', 'Dy', 'Eu', 'F', 'Fe', 'He-3', 'Hg', 'HnCn', 'H2O', 'Ie',
+    'IL', 'Ir', 'Li', 'Nd', 'Ne', 'Ni', 'Pb', 'Pd', 'Pt', 'Pu', 'R-COOH',
+    'Rc', 'Sb', 'SiH3Cl', 'Ta', 'Ti', 'Tsn', 'U', 'V', 'Vr', 'Vy', 'W', 'Xe',
+    'xF4', 'Yb'
+}
+ORGANIC_IDENTIFIERS = {
+    'Adhesive', 'Aromatic', 'Cosmetic', 'Fiber'
+}
+
+# Function to retrieve unique resources from the database and categorize them as inorganic or organic
 def get_unique_resources():
     all_resources = Planets.objects.values_list('resources', flat=True)
-    inorganic_resources = []
-    organic_resources = []
-
-    # Identifiers for categorizing resources
-    inorganic_identifiers = {
-        'Ad','Ag', 'Al', 'Aq', 'Ar', 'Au', 'Be', 'Cl', 'Co', 'Cs', 'Ct',
-        'C6Hn', 'Cu', 'Dy', 'Eu', 'F', 'Fe', 'He-3', 'Hg', 'HnCn', 'H2O', 'Ie',
-        'IL', 'Ir', 'Li', 'Nd', 'Ne', 'Ni', 'Pb', 'Pd', 'Pt', 'Pu', 'R-COOH',
-        'Rc', 'Sb', 'SiH3Cl', 'Ta', 'Ti', 'Tsn', 'U', 'V', 'Vr', 'Vy', 'W', 'Xe',
-        'xF4', 'Yb'
-        }
-    organic_identifiers = {
-        'Adhesive', 'Aromatic', 'Cosmetic', 'Fiber'
-    }
+    inorganic_resources = set()
+    organic_resources = set()
 
     for resource_list in all_resources:
         if resource_list:
@@ -190,15 +167,15 @@ def get_unique_resources():
                 cleaned_resource = resource.strip()
 
                 # Check if the resource name matches any inorganic identifier
-                if any(identifier in cleaned_resource for identifier in inorganic_identifiers):
-                    inorganic_resources.append(cleaned_resource)
+                if any(identifier in cleaned_resource for identifier in INORGANIC_IDENTIFIERS):
+                    inorganic_resources.add(cleaned_resource)
                 # Check if the resource name matches any organic identifier
-                elif any(identifier in cleaned_resource for identifier in organic_identifiers):
-                    organic_resources.append(cleaned_resource)
+                elif any(identifier in cleaned_resource for identifier in ORGANIC_IDENTIFIERS):
+                    organic_resources.add(cleaned_resource)
                 # Default to organic if not matched as organic
                 else:
-                    organic_resources.append(cleaned_resource)
+                    organic_resources.add(cleaned_resource)
     return {
-        'inorganic_resources': sorted(set(inorganic_resources)),
-        'organic_resources': sorted(set(organic_resources))
+        'inorganic_resources': sorted(inorganic_resources),
+        'organic_resources': sorted(organic_resources)
     }
