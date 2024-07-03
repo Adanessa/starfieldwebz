@@ -26,12 +26,13 @@ def search_results(request):
 
     if form.is_valid():
         print("Form is valid")
-        inorganic_resources = form.cleaned_data['inorganic_resources']
-        organic_resources = form.cleaned_data['organic_resources']
-        habitability_rank = form.cleaned_data['habitability_rank']
-        multiple_systems = form.cleaned_data['multiple_systems']
-        show_all_resources = form.cleaned_data.get('show_all_resources', False)
-        manufactured_items = form.cleaned_data['manufactured_items']
+        cleaned_data = form.cleaned_data
+        inorganic_resources = cleaned_data['inorganic_resources']
+        organic_resources = cleaned_data['organic_resources']
+        habitability_rank = cleaned_data['habitability_rank']
+        multiple_systems = cleaned_data['multiple_systems']
+        show_all_resources = cleaned_data.get('show_all_resources', False)
+        manufactured_items = cleaned_data['manufactured_items']
 
         item_names = [item.item_name for item in manufactured_items]
         materials_from_items = gather_materials(item_names)
@@ -42,15 +43,12 @@ def search_results(request):
         planets = Planets.objects.all()
         print(f"Initial planets count: {planets.count()}")
 
-        # Include to set users current habitability level to make sure no planets that have higher hab rank req are chosen
+        # Filter planets based on habitability rank
         if habitability_rank is not None:
-            planets = [
-                planet for planet in planets
-                if planet.hab_rank and planet.hab_rank.isdigit() and int(planet.hab_rank) <= habitability_rank
-            ]
+            planets = [planet for planet in planets if planet.hab_rank and planet.hab_rank.isdigit() and int(planet.hab_rank) <= habitability_rank]
             print(f"Planets after habitability_rank filter: {len(planets)}")
 
-        # Dictionary to map resources to planets that have them
+        # Map resources to planets
         resource_to_planets = defaultdict(list)
         for planet in planets:
             planet_resources = planet.resources.split(', ')
@@ -98,8 +96,8 @@ def search_results(request):
                 if covered_resources == combined_resources:
                     break
 
-        detailed_planet_info = []
         # Prepare detailed planet information for rendering
+        detailed_planet_info = []
         for planet in selected_planets:
             planet_resources = set(map_chemical_symbols(r) for r in planet.resources.split(', '))
             matching_resources = planet_resources & combined_resources
