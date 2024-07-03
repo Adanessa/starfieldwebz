@@ -26,14 +26,10 @@ def search_results(request):
 
     if form.is_valid():
         print("Form is valid")
-        main_planet = form.cleaned_data['main_planet']
         inorganic_resources = form.cleaned_data['inorganic_resources']
         organic_resources = form.cleaned_data['organic_resources']
-        include_domesticables = form.cleaned_data['include_domesticables']
-        include_gatherable = form.cleaned_data['include_gatherable']
         habitability_rank = form.cleaned_data['habitability_rank']
         multiple_systems = form.cleaned_data['multiple_systems']
-        excluded_systems = form.cleaned_data.get('excluded_systems', [])
         show_all_resources = form.cleaned_data.get('show_all_resources', False)
         manufactured_items = form.cleaned_data['manufactured_items']
 
@@ -45,21 +41,7 @@ def search_results(request):
 
         planets = Planets.objects.all()
         print(f"Initial planets count: {planets.count()}")
-        
-        # Filter planets based on main planet selection
-        if main_planet:
-            planets = planets.filter(system=main_planet.system)
-            print(f"Planets after main_planet filter: {planets.count()}")
-            
-        # Include domesticables into the search if you want to see if chosen organic materials can be farmed via outpost.
-        if include_domesticables:
-            planets = planets.filter(domesticable__isnull=False)
-            print(f"Planets after include_domesticables filter: {planets.count()}")
 
-        if include_gatherable:
-            planets = planets.filter(gatherable__isnull=False)
-            print(f"Planets after include_gatherable filter: {planets.count()}")
-            
         # Include to set users current habitability level to make sure no planets that have higher hab rank req are chosen
         if habitability_rank is not None:
             planets = [
@@ -67,10 +49,6 @@ def search_results(request):
                 if planet.hab_rank and planet.hab_rank.isdigit() and int(planet.hab_rank) <= habitability_rank
             ]
             print(f"Planets after habitability_rank filter: {len(planets)}")
-
-        if excluded_systems:
-            planets = planets.exclude(system__in=excluded_systems)
-            print(f"Planets after excluded_systems filter: {planets.count()}")
 
         # Dictionary to map resources to planets that have them
         resource_to_planets = defaultdict(list)
@@ -84,14 +62,6 @@ def search_results(request):
 
         selected_planets = set()
         covered_resources = set()
-        
-        # Add main planet if it meets criteria
-        if main_planet:
-            main_planet_resources = set(map_chemical_symbols(r) for r in main_planet.resources.split(', '))
-            if (not habitability_rank or (main_planet.hab_rank and main_planet.hab_rank.isdigit() and int(main_planet.hab_rank) <= habitability_rank)):
-                selected_planets.add(main_planet)
-                covered_resources.update(main_planet_resources & combined_resources)
-                print(f'Main planet added: {main_planet}, Covered resources: {covered_resources}')
 
         # Select planets that cover all combined resources
         if multiple_systems:
