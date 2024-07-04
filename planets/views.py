@@ -4,6 +4,18 @@ from .forms import PlanetSearchForm
 from .models import Planets, Systems, ManufacturedItem
 from collections import defaultdict
 
+def show_system_resources(selected_systems):
+    system_resources = {}
+    for system in selected_systems:
+        try:
+            system_instance = Systems.objects.get(name=system)
+            resources = system_instance.system_resources.split(', ') if system_instance.system_resources else []
+            system_resources[system_instance.name] = resources
+        except Systems.DoesNotExist:
+            continue
+    return system_resources
+    
+
 def gather_materials(item_names):
     materials_needed = {}
     for item_name in item_names:
@@ -82,6 +94,7 @@ def prepare_planet_info(selected_planets, combined_resources, show_all_resources
 def search_results(request):
     form = PlanetSearchForm(request.POST or None)
     planets_info = None
+    system_resources = None
 
     if form.is_valid():
         print("Form is valid")
@@ -92,6 +105,8 @@ def search_results(request):
         multiple_systems = cleaned_data['multiple_systems']
         show_all_resources = cleaned_data.get('show_all_resources', False)
         manufactured_items = cleaned_data['manufactured_items']
+        selected_systems = cleaned_data.get('selected_systems', [])
+        system_resources = show_system_resources(selected_systems)
 
         item_names = [item.item_name for item in manufactured_items]
         materials_from_items = gather_materials(item_names)
@@ -119,7 +134,8 @@ def search_results(request):
 
     context = {
         'form': form,
-        'planets_info': planets_info
+        'planets_info': planets_info,
+        'system_resources': system_resources,
     }
 
     return render(request, 'planets/search_results.html', context)

@@ -16,6 +16,13 @@ class PlanetSearchForm(forms.Form):
         label="Manufactured Items"
     )
     show_all_resources = forms.BooleanField(required=False, initial=False)
+    
+    selected_systems = forms.ModelMultipleChoiceField(
+        queryset=Systems.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+        label="Select System"
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

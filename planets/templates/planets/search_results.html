@@ -7,10 +7,31 @@
     <h1>Search Results</h1>
     <form method="post" action="{% url 'planets:search_results' %}">
         {% csrf_token %}
+        
+        <!-- Render the form fields automatically -->
         {{ form.as_p }}
+
+        <!-- Existing submit button -->
         <button type="submit">Apply Filter</button>
     </form>
 
+    <!-- Display system resources if available -->
+    {% if system_resources %}
+        <h2>System Resources</h2>
+        <ul>
+            {% for system, resources in system_resources.items %}
+                <li>{{ system }}:
+                    <ul>
+                        {% for resource in resources %}
+                            <li>{{ resource }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Display planets info if available -->
     {% if planets_info %}
         <h2>Best Planets</h2>
         <ul>

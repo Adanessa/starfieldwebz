@@ -29,6 +29,7 @@ class Planets(models.Model):
         
 class Systems(models.Model):
     name = models.CharField(unique=True, max_length=255, blank=True, null=True)
+    system_resources = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
