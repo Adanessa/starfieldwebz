@@ -1,53 +1,63 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Search Results</title>
-</head>
-<body>
-    <h1>Search Results</h1>
-    <form method="post" action="{% url 'planets:search_results' %}">
-        {% csrf_token %}
-        
-        <!-- Render the form fields automatically -->
-        {{ form.as_p }}
+{% extends "base.html" %}
+{% load static %}
 
-        <!-- Existing submit button -->
-        <button type="submit">Apply Filter</button>
-    </form>
+{% block title %}Search Results{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'planets/css/styles.css' %}">
+<div class="grid-container">
+    <div class="title">
+        <h1>Search Results</h1>
+    </div>
+    <div class="form">
+        <form method="post" action="{% url 'planets:search_results' %}">
+            {% csrf_token %}
+            
+            <!-- Render the form fields automatically -->
+            {{ form.as_p }}
+
+            <!-- Existing submit button -->
+            <button type="submit">Apply Filter</button>
+        </form>
+    </div>
 
     <!-- Display system resources if available -->
     {% if system_resources %}
-        <h2>System Resources</h2>
-        <ul>
-            {% for system, resources in system_resources.items %}
-                <li>{{ system }}:
-                    <ul>
-                        {% for resource in resources %}
-                            <li>{{ resource }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="resources">
+            <h2>System Resources</h2>
+            <ul>
+                {% for system, resources in system_resources.items %}
+                    <li>{{ system }}:
+                        <ul>
+                            {% for resource in resources %}
+                                <li>{{ resource }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endif %}
 
     <!-- Display planets info if available -->
     {% if planets_info %}
-        <h2>Best Planets</h2>
-        <ul>
-            {% for info in planets_info %}
-                <li>
-                    {{ info.planet.name }} (System: {{ info.planet.system.name }}) - 
-                    Habitability Rank: {{ info.hab_rank }} - 
-                    Matching Resources: {{ info.matching_resources|join:", " }}<br>
-                    {% if show_all_resources %}
-                        All Resources: {{ info.all_resources|join:", " }}
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="planets">
+            <h2>Best Planets</h2>
+            <ul>
+                {% for info in planets_info %}
+                    <li>
+                        {{ info.planet.name }} (System: {{ info.planet.system.name }}) - 
+                        Habitability Rank: {{ info.hab_rank }} - 
+                        Matching Resources: {{ info.matching_resources|join:", " }}<br>
+                        {% if show_all_resources %}
+                            All Resources: {{ info.all_resources|join:", " }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% else %}
         <p>No planets found matching the criteria.</p>
     {% endif %}
-</body>
-</html>
+</div>
+{% endblock content %}

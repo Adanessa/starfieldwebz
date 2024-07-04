@@ -1,19 +1,50 @@
-.planet-table-container {
-    width: 80%; /* Adjust width as needed */
-    margin: 0 auto; /* Center the container horizontally */
-  }
-  
-  .planet-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .planet-table td, .planet-table th {
-    padding: 8px;
-    border: 1px solid #ccc;
-    max-width: 100px; /* Set max-width as desired */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
+/* planets/css/styles.css */
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+      'title title title title title'
+      'resources resources . items items'
+      'resources resources . items items'
+      'inorganic inorganic . organic organic'
+      '. systems systems systems .';
+  gap: 10px;
+  background-color: black;
+  color: white; /* Adjust text color for better visibility */
+  padding: 20px;
+}
+
+.title {
+  grid-area: title;
+}
+
+.resources {
+  grid-area: resources;
+}
+
+.items {
+  grid-area: items;
+}
+
+.inorganic {
+  grid-area: inorganic;
+}
+
+.organic {
+  grid-area: organic;
+}
+
+.systems {
+  grid-area: systems;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+/* Additional styling can be added based on your design needs */
